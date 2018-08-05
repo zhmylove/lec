@@ -1,0 +1,74 @@
+% Made by: KorG
+% vim: ft=tex cc=79 ts=3 sw=3 et
+\documentclass{beamer}
+\usepackage[T2A]{fontenc}       % fonts
+\usepackage[utf8]{inputenc}     % UTF-8
+\usepackage[english,russian]{babel}     % russian
+\usepackage{cmap}               % russian search in pdf
+\usepackage{pscyr}		        % PSCyr
+\usepackage{float}		        % essential for [H]
+\usepackage{indentfirst}        % first string indention
+\usepackage{graphicx}           % graphics
+\usepackage{ltxtable}           % tables
+\usepackage{amsmath}            % math
+\usepackage{nccmath}            % math
+\usepackage{amsfonts}           % math fonts
+\usepackage{amssymb}            % math symb
+\usepackage{color}
+\usepackage{xcolor}
+\definecolor{light-gray}{gray}{0.9}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{placeins}
+\usepackage{totcount}
+\usepackage{soul}               % \so{} & \ul{} - source and underline
+\usepackage{soulutf8}           % UTF-8 for soul
+\usepackage{verbatim}           % \verb{} and verbatim environment
+\usepackage{listings}           % source code `bl
+\lstset{
+   escapeinside={\#@}{@},
+        extendedchars=\true,
+        numbers=none,
+        inputencoding=utf8,
+        keepspaces=true,
+        basicstyle=\large\ttfamily,
+        backgroundcolor=\color{light-gray},
+        tabsize=3,
+        breaklines=true,
+        postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{
+           \color{red}\hookrightarrow\space}
+        }
+     }
+
+\usebackgroundtemplate{
+   \begin{picture}(0,260)
+      \minipage{0.9\textwidth}
+      \includegraphics[width=0.6\textwidth]{ifmo.jpg} %TODO check file path
+      \endminipage
+      \hfill \hspace*{60px}
+      \ifnum\value{framenumber}>1 \Large \insertpagenumber \fi
+   \end{picture}
+}
+
+\setbeamertemplate{navigation symbols}{}
+
+\title{\LARGE Слайды к лекционному курсу \\ по командным интерпретаторам}
+\author{Жмылёв С.~А.}
+\date{Осень 2018}
+
+\begin{document} \Large
+
+\begin{frame} \titlepage \end{frame}
+
+\begin{frame}[fragile]{Title} \begin{lstlisting}
+# some code...
+\end{lstlisting} 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usebackgroundtemplate{}
+\begin{frame}
+   \centering \LARGE Спасибо за внимание
+\end{frame}
+
+\end{document}
