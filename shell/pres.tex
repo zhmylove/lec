@@ -52,8 +52,8 @@
 
 \setbeamertemplate{navigation symbols}{}
 
-\title{\LARGE Слайды к лекционному курсу \\ по командным интерпретаторам \\
-   и разработке скриптов: \\ sh, ksh, bash, perl}
+\title{\LARGE Материалы к лекциям \\ по интерпретаторам \\
+   sh, ksh, bash, perl \\ и разработке скриптов}
 \author{Жмылёв С.~А.}
 \date{Осень 2018}
 
@@ -105,7 +105,7 @@
 \item Последовательное выполнение: $\&\&, ||, ...$
 \item Условные операторы $if, then, elif, else, fi$
 \item Оператор $case$
-\item Паттерн-матчинг
+\item Паттерн-матчинг и глоб-джокеры
 \item Проверка статуса файлов
 \item Операторы $test, [, [[, !$
 \item Операторы цикла $while, for, ...$
@@ -119,7 +119,26 @@
 \begin{frame}[fragile]{Структура курса (\stepcounter{TocNum}\arabic{TocNum})}
 \begin{enumerate} \setcounter{enumi}{\value{TocEnum}}
 
-\item Опции интерпретаторов
+\item Оператор $select$
+\item Опции интерпретаторов $set$
+\item Переменные Prompt String
+\item Работа с аргументами скрипта $\$@,\$*,shift$
+\item Функции
+\item Command Substitution
+\item Команды $exec, eval$
+\item Перенаправление ввода-вывода, Here-document
+
+\setcounter{TocEnum}{\value{enumi}}
+\end{enumerate}
+\end{frame}
+%% END_FRAME
+
+%% BEGIN_FRAME
+\begin{frame}[fragile]{Структура курса (\stepcounter{TocNum}\arabic{TocNum})}
+\begin{enumerate} \setcounter{enumi}{\value{TocEnum}}
+
+\item Parameter Expansion и стандартные значения
+\item Переменная IFS
 \item (t)csh: история, где встречается, концептуальные и синтаксические отличия
 
 \setcounter{TocEnum}{\value{enumi}}
