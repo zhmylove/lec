@@ -52,13 +52,45 @@
 
 \setbeamertemplate{navigation symbols}{}
 
-\title{\LARGE Слайды к лекционному курсу \\ по командным интерпретаторам}
+\title{\LARGE Слайды к лекционному курсу \\ по командным интерпретаторам \\
+   и разработке скриптов: \\ sh, ksh, bash, perl}
 \author{Жмылёв С.~А.}
 \date{Осень 2018}
 
 \begin{document} \Large
 
 \begin{frame} \titlepage \end{frame}
+
+\newcounter{TocNum}
+\newcounter{TocEnum}
+\begin{frame}[fragile]{Структура курса (\stepcounter{TocNum}\arabic{TocNum})}
+\begin{enumerate}
+
+\item Взаимодействие с системой
+\item Философия UNIX: текстовые потоки
+\item Потоки ввода-вывода
+\item Командный интерпретатор
+\item Разновидности интерпретаторов
+\item Командный файл (скрипт)
+\item Комментарии
+\item Команды: утилиты, функции, ...
+
+\setcounter{TocEnum}{\value{enumi}}
+\end{enumerate}
+\end{frame}
+
+%% BEGIN_FRAME
+\begin{frame}[fragile]{Структура курса (\stepcounter{TocNum}\arabic{TocNum})}
+\begin{enumerate} \setcounter{enumi}{\value{TocEnum}}
+
+\item Перечень часто используемых утилит
+\item Переменные
+\item Условные операторы
+\item Операторы цикла
+
+\end{enumerate}
+\end{frame}
+%% END_FRAME
 
 \begin{frame}[fragile]{Title} \begin{lstlisting}
 # some code...
