@@ -1,6 +1,6 @@
 % Made by: KorG
 % vim: ft=tex cc=79 ts=3 sw=3 et
-\documentclass{beamer}
+\documentclass[hyperref={unicode=true}]{beamer}
 \usepackage[T2A]{fontenc}       % fonts
 \usepackage[utf8]{inputenc}     % UTF-8
 \usepackage[english,russian]{babel}     % russian
@@ -25,6 +25,7 @@
 \usepackage{soulutf8}           % UTF-8 for soul
 \usepackage{verbatim}           % \verb{} and verbatim environment
 \usepackage{listings}           % source code `bl
+\usepackage{totcount}
 \lstset{
    escapeinside={\#@}{@},
         extendedchars=\true,
@@ -52,109 +53,172 @@
 
 \setbeamertemplate{navigation symbols}{}
 
-\title{\LARGE Материалы к лекциям \\ по интерпретаторам \\
-   sh, ksh, bash, perl \\ и разработке скриптов}
-\author{Жмылёв С.~А.}
+\title{\LARGE Материалы к лекциям \\ по разработке скриптов, \\
+   интерпретаторам \\ семейства sh и perl \vspace{2em}}
+\author{Жмылёв С.~А. \vspace{-1em}}
 \date{Осень 2018}
 
 \begin{document} \Large
 
 \begin{frame} \titlepage \end{frame}
 
-\newcounter{TocNum}
-\newcounter{TocEnum}
-\begin{frame}[fragile]{Структура курса (\stepcounter{TocNum}\arabic{TocNum})}
-\begin{enumerate}
-
-\item Взаимодействие с системой
-\item Философия UNIX: текстовые потоки
-\item Потоки ввода-вывода
-\item Командный интерпретатор
-\item Разновидности интерпретаторов
-\item Командный файл (скрипт)
-\item Комментарии
-\item Команды: утилиты, функции, ...
-
-\setcounter{TocEnum}{\value{enumi}}
-\end{enumerate}
+\regtotcounter{section}
+\setbeamertemplate{section in toc}{\inserttocsection}
+\setbeamercolor{section in toc}{fg=black}
+\begin{frame}[allowframebreaks]{Структура курса}
+\fontsize{1em}{-1em}\selectfont
+\vspace{1em} \tableofcontents[sections=1-8] \vspace{2em}
+\ifnum\totvalue{section}>8 \framebreak
+\vspace{1em} \tableofcontents[sections=9-16]  \vspace{2em} \fi
+\ifnum\totvalue{section}>16 \framebreak
+\vspace{1em} \tableofcontents[sections=17-24] \vspace{2em} \fi
+\ifnum\totvalue{section}>24 \framebreak
+\vspace{1em} \tableofcontents[sections=25-32] \vspace{2em} \fi
+\ifnum\totvalue{section}>32 \framebreak
+\vspace{1em} \tableofcontents[sections=33-40] \vspace{2em} \fi
+\ifnum\totvalue{section}>40 \framebreak
+\vspace{1em} \tableofcontents[sections=41-48] \vspace{2em} \fi
+\ifnum\totvalue{section}>48 \framebreak
+\vspace{1em} \tableofcontents[sections=49-56] \vspace{2em} \fi
+\ifnum\totvalue{section}>56 \framebreak
+\vspace{1em} \tableofcontents[sections=57-64] \vspace{2em} \fi
+\ifnum\totvalue{section}>64 \framebreak
+\vspace{1em} \tableofcontents[sections=65-72] \vspace{2em} \fi
+\ifnum\totvalue{section}>72 \framebreak
+\vspace{1em} \tableofcontents[sections=73-80] \vspace{2em} \fi
+\ifnum\totvalue{section}>80 \framebreak
+\vspace{1em} \tableofcontents[sections=81-88] \vspace{2em} \fi
+\ifnum\totvalue{section}>88 \framebreak
+\vspace{1em} \tableofcontents[sections=89-96] \vspace{2em} \fi
+\ifnum\totvalue{section}>96 \framebreak
+\vspace{1em} \tableofcontents[sections=97-104] \vspace{2em} \fi
 \end{frame}
 
-%% BEGIN_FRAME
-\begin{frame}[fragile]{Структура курса (\stepcounter{TocNum}\arabic{TocNum})}
-\begin{enumerate} \setcounter{enumi}{\value{TocEnum}}
+\newcommand{\iframe}[1]{
+   \section{#1}\begin{frame}[fragile]{#1}\par\vspace{-1em}
+}
+\newcommand{\pframe}[1]{
+   \begin{frame}[fragile]{#1}\par\vspace{-1em}
+}
 
-\item Перечень часто используемых утилит
-\item Переменные окружения
-\item Переменные интерпретатора
-\item Ввод-вывод
-\item Оператор присваивания
-\item Типы данных: shell
-\item Типы данных: perl
-\item Математические операции
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{slides/refs}
 
-\setcounter{TocEnum}{\value{enumi}}
-\end{enumerate}
+\iframe{Взаимодействие с системой}
 \end{frame}
-%% END_FRAME
 
-%% BEGIN_FRAME
-\begin{frame}[fragile]{Структура курса (\stepcounter{TocNum}\arabic{TocNum})}
-\begin{enumerate} \setcounter{enumi}{\value{TocEnum}}
-
-\item Группировка операций
-\item Последовательное выполнение: $\&\&, ||, ...$
-\item Условные операторы $if, then, elif, else, fi$
-\item Оператор $case$
-\item Паттерн-матчинг и глоб-джокеры
-\item Проверка статуса файлов
-\item Операторы $test, [, [[, !$
-\item Операторы цикла $while, for, ...$
-
-\setcounter{TocEnum}{\value{enumi}}
-\end{enumerate}
+\iframe{Философия UNIX: текстовые потоки}
 \end{frame}
-%% END_FRAME
 
-%% BEGIN_FRAME
-\begin{frame}[fragile]{Структура курса (\stepcounter{TocNum}\arabic{TocNum})}
-\begin{enumerate} \setcounter{enumi}{\value{TocEnum}}
-
-\item Оператор $select$
-\item Опции интерпретаторов $set$
-\item Переменные Prompt String
-\item Работа с аргументами скрипта $\$@,\$*,shift$
-\item Функции
-\item Command Substitution
-\item Команды $exec, eval$
-\item Перенаправление ввода-вывода, Here-document
-
-\setcounter{TocEnum}{\value{enumi}}
-\end{enumerate}
+\iframe{Потоки ввода-вывода}
 \end{frame}
-%% END_FRAME
 
-%% BEGIN_FRAME
-\begin{frame}[fragile]{Структура курса (\stepcounter{TocNum}\arabic{TocNum})}
-\begin{enumerate} \setcounter{enumi}{\value{TocEnum}}
-
-\item Parameter Expansion и стандартные значения
-\item Переменная IFS
-\item (t)csh: история, где встречается, концептуальные и синтаксические отличия
-
-\setcounter{TocEnum}{\value{enumi}}
-\end{enumerate}
+\iframe{Командный интерпретатор}
 \end{frame}
-%% END_FRAME
 
-\begin{frame}[fragile]{Title} \begin{lstlisting}
-# some code...
-\end{lstlisting} 
+\iframe{Разновидности интерпретаторов}
+\end{frame}
+
+\iframe{Командный файл (скрипт)}
+\end{frame}
+
+\iframe{Комментарии}
+\end{frame}
+
+\iframe{Команды: утилиты, функции, ...}
+\end{frame}
+
+\iframe{Перечень часто используемых утилит}
+\end{frame}
+
+\iframe{Переменные окружения}
+\end{frame}
+
+\iframe{Переменные интерпретатора}
+\end{frame}
+
+\iframe{Ввод-вывод}
+\end{frame}
+
+\iframe{Оператор присваивания}
+\end{frame}
+
+\iframe{Типы данных: shell}
+\end{frame}
+
+\iframe{Типы данных: perl}
+\end{frame}
+
+\iframe{Математические операции}
+\end{frame}
+
+\iframe{Группировка операций}
+\end{frame}
+
+\iframe{Последовательное выполнение: $\&\&, ||, ...$}
+\end{frame}
+
+\iframe{Условные операторы $if, then, elif, else, fi$}
+\end{frame}
+
+\iframe{Оператор $case$}
+\end{frame}
+
+\iframe{Паттерн-матчинг и глоб-джокеры}
+\end{frame}
+
+\iframe{Проверка статуса файлов}
+\end{frame}
+
+\iframe{Операторы $test, [, [[, !$}
+\end{frame}
+
+\iframe{Операторы цикла $while, for, ...$}
+\end{frame}
+
+\iframe{Оператор $select$}
+\end{frame}
+
+\iframe{Опции интерпретаторов $set$}
+\end{frame}
+
+\iframe{Переменные Prompt String}
+\end{frame}
+
+\iframe{Работа с аргументами скрипта $\$@,\$*,shift$}
+\end{frame}
+
+\iframe{Функции}
+\end{frame}
+
+\iframe{Command Substitution}
+\end{frame}
+
+\iframe{Команды $exec, eval$}
+\end{frame}
+
+\iframe{Перенаправление ввода-вывода, Here-document}
+\end{frame}
+
+\iframe{Parameter Expansion и стандартные значения}
+\end{frame}
+
+\iframe{Переменная IFS}
+\end{frame}
+
+\iframe{(t)csh: история, где встречается, концептуальные
+   и синтаксические отличия}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usebackgroundtemplate{}
-\begin{frame}
-   \centering \LARGE Спасибо за внимание
+\begin{frame}[fragile]
+\vspace{3em}
+\centering \LARGE Спасибо за внимание
+\vspace{4em}
+\begin{lstlisting}[basicstyle=\tiny]
+# perl '-es!!),-#(-.?{<>-8#=..#<-*}>;*7-86)!;y!#()-?{}!\x20/`-v;<!;s++$_+ee'
+\end{lstlisting} 
 \end{frame}
 
 \end{document}

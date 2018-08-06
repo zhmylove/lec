@@ -1,0 +1,21 @@
+\pframe{Полезные ссылки}
+
+\large \hspace{-1.3em} \url{https://www.freebsd.org/cgi/man.cgi?query=sh}
+
+\hspace{-1.3em} \url{https://perldoc.perl.org/perl.html}
+
+\Large \vspace{1em}
+
+Материалы по курсу:
+
+\url{https://se.ifmo.ru/~korg/} \vspace{1em}
+
+Группа ВКонтакте (объявления, вопросы):
+
+\url{https://vk.com/korglings} \vspace{1em}
+
+Репозиторий с лекционными материалами:
+
+\url{https://github.com/zhmylove/lec}
+
+\end{frame}
