@@ -1,0 +1,17 @@
+% vim: ft=tex cc=79 ts=3 sw=3 et
+% 
+% iframe = master frame; pframe = slave frame
+\iframe{Взаимодействие с системой}
+
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[height=0.8\textheight]{img/teletype.jpg}
+\end{column}
+\begin{column}{0.5\textwidth}
+\hspace{-0.5cm}
+\includegraphics[height=0.8\textheight]{img/console.jpg}
+\end{column}
+\end{columns}
+
+\end{frame}

@@ -26,6 +26,8 @@
 \usepackage{verbatim}           % \verb{} and verbatim environment
 \usepackage{listings}           % source code `bl
 \usepackage{totcount}
+\usepackage{pbox}
+\usepackage{rotating}
 \lstset{
    escapeinside={\#@}{@},
         extendedchars=\true,
@@ -102,22 +104,13 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{slides/refs}
-
-\iframe{Взаимодействие с системой}
-\end{frame}
-
-\iframe{Философия UNIX: текстовые потоки}
-\end{frame}
-
-\iframe{Потоки ввода-вывода}
-\end{frame}
-
-\iframe{Командный интерпретатор}
-\end{frame}
-
-\iframe{Разновидности интерпретаторов}
-\end{frame}
+\input{slides/refs} % полезные ссылки
+\input{slides/org} % организационные вопросы
+\input{slides/interaction} % взаимодействие с системой
+\input{slides/philosophy} % философия UNIX
+\input{slides/stdio} % потоки ввода-вывода
+\input{slides/interpretator} % командный интерпретатор
+\input{slides/shells} % разновидности интерпретаторов
 
 \iframe{Командный файл (скрипт)}
 \end{frame}
@@ -210,15 +203,19 @@
    и синтаксические отличия}
 \end{frame}
 
+\input{slides/thanks} % благодарности
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usebackgroundtemplate{}
 \begin{frame}[fragile]
 \vspace{3em}
 \centering \LARGE Спасибо за внимание
+
 \vspace{4em}
+\begin{tabular}{c}
 \begin{lstlisting}[basicstyle=\tiny]
 # perl '-es!!),-#(-.?{<>-8#=..#<-*}>;*7-86)!;y!#()-?{}!\x20/`-v;<!;s++$_+ee'
 \end{lstlisting} 
+\end{tabular}
 \end{frame}
 
 \end{document}

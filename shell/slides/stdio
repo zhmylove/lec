@@ -1,0 +1,27 @@
+% vim: ft=tex cc=79 ts=3 sw=3 et
+% 
+% iframe = master frame; pframe = slave frame
+\iframe{Потоки ввода-вывода}
+
+-- это записи из таблицы дескрипторов открытых файлов для \textbf{процесса}.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Номер} & \textbf{Файл} & \textbf{Флаги} \\
+\hline 0 & файл с паролями & чтение \\ 
+\hline 1 & терминал & запись \\
+\hline ... & & \\
+\hline 255 & & \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{itemize}
+\item 0 -- стандартный поток ввода (stdin)
+\item 1 -- стандартный поток вывода (stdout)
+\item 2 -- стандартный поток ошибок (stderr)
+\end{itemize}
+
+\end{frame}

@@ -1,0 +1,8 @@
+% vim: ft=tex cc=79 ts=3 sw=3 et
+% 
+% iframe = master frame; pframe = slave frame
+\<++>frame{<++>}
+
+<++>
+
+\end{frame}
