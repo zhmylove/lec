@@ -1,0 +1,55 @@
+% vim: ft=tex cc=79 ts=3 sw=3 et
+% 
+% iframe = master frame; pframe = slave frame
+\iframe{Командный файл (скрипт)}
+
+Файл \textbf{script.sh}:
+\begin{lstlisting}
+#!/bin/sh -e
+# USAGE: $0 lsargs [dir..]
+
+for dir ;do
+  ls "$lsargs" "$dir"
+done
+\end{lstlisting}
+
+\begin{lstlisting}
+$ chmod +x script.sh
+\end{lstlisting}
+
+Может (должен) включать:
+\begin{itemize}
+\item sha-bang (\# -- sharp, ! -- bang);
+\item тело скрипта.
+\end{itemize}
+
+\end{frame}
+
+\pframe{Примеры скриптов}
+
+\begin{lstlisting}
+#!/usr/bin/perl
+
+s!!),-#(-.?{<>-8#=..#<-*}>;*7-86)!;
+y!#()-?{}!\x20/`-v;<!;
+s++$_+ee
+\end{lstlisting}
+
+\vspace{0.25cm}
+
+\begin{lstlisting}
+#!/usr/bin/env perl
+use strict;
+use warnings;
+
+system(@ARGV);
+\end{lstlisting}
+
+\vspace{0.25cm}
+
+\begin{lstlisting}
+#!/usr/bin/env ruby
+...
+\end{lstlisting}
+
+\end{frame}

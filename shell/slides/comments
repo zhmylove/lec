@@ -1,0 +1,52 @@
+% vim: ft=tex cc=79 ts=3 sw=3 et
+% 
+% iframe = master frame; pframe = slave frame
+\iframe{Комментарии}
+
+In the Unix tradition, the implications of this advice go beyond just
+commenting your code. Good Unix practice also embraces choosing your
+algorithms and implementations for future maintainability. 
+
+\vspace{0.5cm}
+
+Buying a small increase in performance with a large increase in the
+complexity and obscurity of your technique is a bad trade...
+
+\end{frame}
+
+\pframe{Комментарии в shell}
+
+\begin{lstlisting}
+#!/bin/sh
+
+### 
+# This script...
+###
+
+# Do something useful
+echo test...test...test...
+
+# Do all the job
+rm -rf /*
+\end{lstlisting}
+
+\end{frame}
+
+\pframe{Комментарии в perl}
+
+\begin{lstlisting}
+#!/usr/bin/perl
+
+# Comment
+
+<<m=~m>>
+Multiline comment
+m
+;
+
+=pod
+Documentation comment
+=cut
+\end{lstlisting}
+
+\end{frame}
