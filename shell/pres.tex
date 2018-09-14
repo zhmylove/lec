@@ -30,18 +30,20 @@
 \usepackage{rotating}
 \lstset{
    escapeinside={\#@}{@},
-        extendedchars=\true,
-        numbers=none,
-        inputencoding=utf8,
-        keepspaces=true,
-        basicstyle=\large\ttfamily,
-        backgroundcolor=\color{light-gray},
-        tabsize=3,
-        breaklines=true,
-        postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{
-           \color{red}\hookrightarrow\space}
-        }
-     }
+   extendedchars=\true,
+   numbers=none,
+   inputencoding=utf8,
+   keepspaces=true,
+   basicstyle=\large\ttfamily,
+   aboveskip=0px,
+   belowskip=0px,
+   backgroundcolor=\color{light-gray},
+   tabsize=3,
+   breaklines=true,
+   postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{
+      \color{red}\hookrightarrow\space}
+   }
+}
 
 \usebackgroundtemplate{
    \begin{picture}(0,260)
@@ -97,10 +99,10 @@
 \end{frame}
 
 \newcommand{\iframe}[1]{
-   \section{#1}\begin{frame}[fragile]{#1}\par\vspace{-1em}
+\section{#1}\begin{frame}[fragile]{#1}\par\vspace{-1em}
 }
 \newcommand{\pframe}[1]{
-   \begin{frame}[fragile]{#1}\par\vspace{-1em}
+\begin{frame}[fragile]{#1}\par\vspace{-1em}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -203,15 +205,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usebackgroundtemplate{}
 \begin{frame}[fragile]
-\vspace{3em}
-\centering \LARGE Спасибо за внимание
+   \vspace{3em}
+   \centering \LARGE Спасибо за внимание
 
-\vspace{4em}
-\begin{tabular}{c}
-\begin{lstlisting}[basicstyle=\tiny]
-# perl '-es!!),-#(-.?{<>-8#=..#<-*}>;*7-86)!;y!#()-?{}!\x20/`-v;<!;s++$_+ee'
-\end{lstlisting} 
-\end{tabular}
+   \vspace{4em}
+   \begin{tabular}{c}
+      \begin{lstlisting}[basicstyle=\tiny]
+      # perl '-es!!),-#(-.?{<>-8#=..#<-*}>;*7-86)!;y!#()-?{}!\x20/`-v;<!;s++$_+ee'
+      \end{lstlisting} 
+   \end{tabular}
 \end{frame}
 
 \end{document}
