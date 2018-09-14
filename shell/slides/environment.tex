@@ -1,0 +1,36 @@
+% vim: ft=tex cc=79 ts=3 sw=3 et
+% 
+% iframe = master frame; pframe = slave frame
+\iframe{Контекст (окружение) процесса}
+
+\large
+\begin{columns}[T]
+
+\hspace{-0.5cm}\begin{column}{.48\textwidth}
+Аппаратный контекст:
+\begin{itemize}
+\item управляющие регистры (CR*);
+\item регистры общего назначения;
+\item стековые регистры;
+\item instruction pointer;
+\item ...
+\end{itemize}
+\end{column}
+
+\hspace{-0.5cm}\begin{column}{.58\textwidth}
+Программный контекст:
+\begin{itemize}
+\item переменные окружения;
+\item дескрипторы открытых файлов;
+\item позиционные параметры (argv);
+\item рабочая директория;
+\item маска создания файлов;
+\item ограничения на процесс (ulimit);
+\item обработчики сигналов;
+\item группа процессов, сессия;
+\item ...
+\end{itemize}
+
+\end{column}
+\end{columns}
+\end{frame}

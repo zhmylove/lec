@@ -1,0 +1,19 @@
+% vim: ft=tex cc=79 ts=3 sw=3 et
+% 
+% iframe = master frame; pframe = slave frame
+\iframe{Псевдонимы команд (alias)}
+
+В некоторых версиях sh, стандарте IEEE 1003.2 (POSIX.1), а также
+современных интерпретаторах alias -- это возможность сделать короткую
+текстовую замену: \vspace{0.5cm}
+\begin{lstlisting}
+$ alias x="/bin/ls -l "
+$ alias y="/bin/ls -l"
+$ alias z="/"
+$ x z
+=> /bin/ls /
+$ y z
+=> /bin/ls z
+\end{lstlisting}
+
+\end{frame}
