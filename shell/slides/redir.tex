@@ -1,0 +1,32 @@
+% vim: ft=tex cc=79 ts=3 sw=3 et
+% 
+% iframe = master frame; pframe = slave frame
+\iframe{Перенаправление ввода-вывода}
+
+\begin{tabular}{ll}
+\lstinline{[n]> file } &  очистка + запись в начало \\
+\lstinline{[n]>| file} &  очистка + запись в начало, \\
+  & игнорируя noclobber \\
+\lstinline{[n]>> file} &  запись в конец \\
+\lstinline{[n]< file } &  чтение с начала \\
+\lstinline{[n]<> file} &  чтение + запись в начало \\
+\lstinline{[n1]<\&n2 } &  скопировать n2 -> n1 на чтение \\
+\lstinline{[n]<\&-   } &  закрыть дескриптор \\
+\lstinline{[n1]>\&n2 } &  скопировать n2 -> n1 на запись \\
+\lstinline{[n]>\&-   } &  закрыть дескриптор
+\end{tabular}
+
+\end{frame}
+
+\pframe{Перенаправление ввода-вывода}
+
+\begin{lstlisting}
+[n]<<[-] разделитель
+   ...
+   буквы
+   ...
+   разделитель
+   ...
+разделитель
+\end{lstlisting}
+\end{frame}
