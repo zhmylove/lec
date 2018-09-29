@@ -1,0 +1,107 @@
+% vim: ft=tex cc=79 ts=3 sw=3 et
+% 
+% iframe = master frame; pframe = slave frame
+\iframe{Переменные и параметры}
+
+\begin{lstlisting}
+name=value
+name: [_A-Za-z][_A-Za-z0-9]
+special name: * @ # ? - $ ! 0
+\end{lstlisting}
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Имя} & \textbf{Значение} & \textbf{Экспортировать} \\
+\hline name & value & \\
+\hline name2 & value & + \\
+\hline
+\end{tabular}
+\end{table}
+
+Параметры, имя которых $\mathbb{N}$ называют позиционными: \lstinline{$1, $13, ...}
+\begin{lstlisting}
+$ ls -la /etc/passwd /etc/group
+\end{lstlisting}
+
+\end{frame}
+
+\iframe{Специальные параметры}
+
+\begin{table}[H]
+\centering
+\begin{tabular*}{\textwidth}{|l|l|}
+\hline \textbf{Имя} & \textbf{Раскрывается в} \\
+\hline
+\lstinline{*} & позиционные параметры \\
+\lstinline{@} & позиционные параметры \\
+\lstinline{#} & число позиционных параметров \\
+\lstinline{?} & код возврата последней команды \\
+\lstinline{-} & опции интерпретатора \\
+\lstinline{$} & PID интерпретатора \\
+\lstinline{!} & PID последней <<свернутой>> команды \\
+\lstinline{0} & argv[0] \\
+\hline
+\end{tabular*}
+\end{table}
+
+\end{frame}
+
+\iframe{Специальные переменные}
+
+\begin{table}[H]
+\centering
+\begin{tabular*}{\textwidth}{|l|l|}
+\hline \textbf{Имя} & \textbf{Назначение} \\
+\hline
+EDITOR & Редактор \\
+HOME & Путь к домашнему каталогу \\
+IFS & Разделитель полей \\
+PATH & Пути для поиска утилит \\
+PPID & Идентификатор родительского \\
+ & процесса \\
+PS1 & Первое приглашение \\
+PS2 & Последующие приглашения \\
+PS3 & (ksh) Приглашение select \\
+PS4 & Подсказка для отладки \\
+\hline
+\end{tabular*}
+\end{table}
+
+\end{frame}
+
+
+\iframe{Подстановка значений}
+
+\begin{enumerate}
+\item \textit{Раскрытие тильды}, раскрытие параметров, подстановка результатов команды,
+\textit{раскрытие арифметических операций}
+\item Разделение на поля в зависимости от \lstinline{$IFS}
+\item Подстановка путей к файлам (раскрытие глобов)
+\item Удаление экранирующих символов
+\end{enumerate}
+
+\end{frame}
+
+%TODO: fix
+\iframe{Раскрытие параметров}
+
+\begin{lstlisting}
+${expression}
+
+${parameter}
+
+${parameter:-word}
+${parameter:=word}
+${parameter:?[word]}
+${parameter:+word}
+
+${parameter#pattern}
+${parameter##pattern}
+${parameter%pattern}
+${parameter%%pattern}
+\end{lstlisting}
+
+\lstinline{:} -- параметр не установлен или пуст.
+
+\end{frame}

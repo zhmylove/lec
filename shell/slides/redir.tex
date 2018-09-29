@@ -10,10 +10,10 @@
 \lstinline{[n]>> file} &  запись в конец \\
 \lstinline{[n]< file } &  чтение с начала \\
 \lstinline{[n]<> file} &  чтение + запись в начало \\
-\lstinline{[n1]<\&n2 } &  скопировать n2 -> n1 на чтение \\
-\lstinline{[n]<\&-   } &  закрыть дескриптор \\
-\lstinline{[n1]>\&n2 } &  скопировать n2 -> n1 на запись \\
-\lstinline{[n]>\&-   } &  закрыть дескриптор
+\lstinline{[n1]<&n2 } &  скопировать n2 -> n1 на чтение \\
+\lstinline{[n]<&-   } &  закрыть дескриптор \\
+\lstinline{[n1]>&n2 } &  скопировать n2 -> n1 на запись \\
+\lstinline{[n]>&-   } &  закрыть дескриптор
 \end{tabular}
 
 \end{frame}
@@ -21,12 +21,22 @@
 \pframe{Перенаправление ввода-вывода}
 
 \begin{lstlisting}
-[n]<<[-] разделитель
-   ...
-   буквы
-   ...
-   разделитель
-   ...
+[n]<<[-] разделитель 
+   ... 
+   буквы $name
+   ... 
+   разделитель 
+   ... 
 разделитель
+
 \end{lstlisting}
+
+\begin{lstlisting}
+$ pfiles 13666
+...
+3: S_IFREG mode:0600 dev:310,2 ino:4195683897 uid:378 gid:10 size:0
+   O_RDWR|O_CREAT|O_EXCL|O_LARGEFILE
+   /tmp/sh270320
+\end{lstlisting}
+
 \end{frame}
