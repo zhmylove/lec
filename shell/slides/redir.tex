@@ -4,17 +4,36 @@
 \iframe{Перенаправление ввода-вывода}
 
 \begin{tabular}{ll}
-\lstinline{[n]> file } &  очистка + запись в начало \\
-\lstinline{[n]>| file} &  очистка + запись в начало, \\
+\lstinline{[1]> file } &  очистка + запись в начало \\
+\lstinline{[1]>| file} &  очистка + запись в начало, \\
   & игнорируя noclobber \\
-\lstinline{[n]>> file} &  запись в конец \\
-\lstinline{[n]< file } &  чтение с начала \\
-\lstinline{[n]<> file} &  чтение + запись в начало \\
-\lstinline{[n1]<&n2 } &  скопировать n2 -> n1 на чтение \\
-\lstinline{[n]<&-   } &  закрыть дескриптор \\
-\lstinline{[n1]>&n2 } &  скопировать n2 -> n1 на запись \\
-\lstinline{[n]>&-   } &  закрыть дескриптор
+\lstinline{[1]>> file} &  запись в конец \\
+\lstinline{[0]< file } &  чтение с начала \\
+\lstinline{[0]<> file} &  чтение + запись в начало \\
+   \lstinline{[0]<&n2 } &  скопировать n2 -> n1 \\
+\lstinline{[0]<&-   } &  закрыть дескриптор \\
+\lstinline{[1]>&n2 } &  скопировать n2 -> n1 \\
+\lstinline{[1]>&-   } &  закрыть дескриптор
 \end{tabular}
+
+\end{frame}
+
+\pframe{Перенаправление <>}
+
+Открывает stdin на чтение и запись, позиция внутри файла устанавливается в
+начало (0).
+
+\begin{lstlisting}
+$ echo 123 > file
+$ perl -le '
+sysread \*STDIN, my $x, 1; 
+print $x; 
+syswrite \*STDIN, "x", 1;
+' <> file
+===> 1
+$ cat file
+===> 1x3
+\end{lstlisting}
 
 \end{frame}
 
