@@ -83,6 +83,23 @@ PS4 & Подсказка для отладки \\
 
 \end{frame}
 
+\iframe{Раскрытие тильды}
+
+\begin{lstlisting}
+$ echo ~
+/home/valeriyk
+$ echo ~root
+/root
+$ home=:~
+$ echo $home
+:/home/valeriyk
+$ home=x~
+$ echo $home
+x~
+\end{lstlisting}
+
+\end{frame}
+
 %TODO: fix
 \iframe{Раскрытие параметров}
 
@@ -103,5 +120,33 @@ ${parameter%%pattern}
 \end{lstlisting}
 
 \lstinline{:} -- параметр не установлен или пуст.
+
+\end{frame}
+
+\iframe{Переменные \$@ и \$*}
+\begin{lstlisting}
+$ set a b c
+$ IFS=,
+$ echo "$@"
+a b c
+$ echo "$*"
+a,b,c
+\end{lstlisting}
+
+\end{frame}
+
+\iframe{Раскрытие путей}
+
+\begin{table}[H]
+   \centering
+   \begin{tabular*}{\textwidth}{|l|l|}
+      \hline
+      \texttt{*}      & любая строка, включая пустую \\
+      \texttt{?}      & любой символ \\
+      \texttt{[...]}  & любой из перечисленных символов \\
+      \texttt{[!...]} & любой символ, кроме указанных \\
+      \hline
+   \end{tabular*}
+\end{table}
 
 \end{frame}
