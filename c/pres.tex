@@ -1,0 +1,246 @@
+% Made by: KorG
+% vim: ft=tex cc=79 ts=3 sw=3 et
+\documentclass[hyperref={unicode=true}]{beamer}
+\usepackage[T2A]{fontenc}       % fonts
+\usepackage[utf8]{inputenc}     % UTF-8
+\usepackage[english,russian]{babel}     % russian
+\usepackage{cmap}               % russian search in pdf
+\usepackage{droid}		        % Droid font
+\usepackage{float}		        % essential for [H]
+\usepackage{indentfirst}        % first string indention
+\usepackage{graphicx}           % graphics
+\usepackage{ltxtable}           % tables
+\usepackage{amsmath}            % math
+\usepackage{nccmath}            % math
+\usepackage{amsfonts}           % math fonts
+\usepackage{amssymb}            % math symb
+\usepackage{color}
+\usepackage{xcolor}
+\definecolor{light-gray}{gray}{0.9}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{placeins}
+\usepackage{totcount}
+\usepackage{soul}               % \so{} & \ul{} - source and underline
+\usepackage{soulutf8}           % UTF-8 for soul
+\usepackage{verbatim}           % \verb{} and verbatim environment
+\usepackage{listings}           % source code `bl
+\usepackage{totcount}
+\usepackage{pbox}
+\usepackage{rotating}
+\lstset{
+   escapeinside={\#@}{@},
+   extendedchars=\true,
+   numbers=none,
+   inputencoding=utf8,
+   keepspaces=true,
+   basicstyle=\large\ttfamily,
+   backgroundcolor=\color{light-gray},
+   tabsize=3,
+   breaklines=true,
+   postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{
+      \color{red}\hookrightarrow\space}
+   }
+}
+
+\usebackgroundtemplate{
+   \begin{picture}(0,260)
+      \minipage{0.9\textwidth}
+      \includegraphics[width=0.6\textwidth]{ifmo.jpg} %TODO check file path
+      \endminipage
+      \hfill \hspace*{60px}
+      \ifnum\value{framenumber}>1 \Large \insertpagenumber \fi
+   \end{picture}
+}
+
+\setbeamertemplate{navigation symbols}{}
+
+\title{\LARGE Материалы к лекциям \\ по основам \\
+   системного программирования \vspace{2em}}
+\author{Жмылёв Сергей Александрович \vspace{-1em}}
+\date{Осень 2018}
+
+\begin{document} \Large
+
+\begin{frame} \titlepage \end{frame}
+
+\regtotcounter{section}
+\setbeamertemplate{section in toc}{\inserttocsection}
+\setbeamercolor{section in toc}{fg=black}
+\begin{frame}[allowframebreaks]{Структура курса}
+\fontsize{1em}{-1em}\selectfont
+\vspace{1em} \tableofcontents[sections=1-8] \vspace{2em}
+\ifnum\totvalue{section}>8 \framebreak
+\vspace{1em} \tableofcontents[sections=9-16]  \vspace{2em} \fi
+\ifnum\totvalue{section}>16 \framebreak
+\vspace{1em} \tableofcontents[sections=17-24] \vspace{2em} \fi
+\ifnum\totvalue{section}>24 \framebreak
+\vspace{1em} \tableofcontents[sections=25-32] \vspace{2em} \fi
+\ifnum\totvalue{section}>32 \framebreak
+\vspace{1em} \tableofcontents[sections=33-40] \vspace{2em} \fi
+\ifnum\totvalue{section}>40 \framebreak
+\vspace{1em} \tableofcontents[sections=41-48] \vspace{2em} \fi
+\ifnum\totvalue{section}>48 \framebreak
+\vspace{1em} \tableofcontents[sections=49-56] \vspace{2em} \fi
+\ifnum\totvalue{section}>56 \framebreak
+\vspace{1em} \tableofcontents[sections=57-64] \vspace{2em} \fi
+\ifnum\totvalue{section}>64 \framebreak
+\vspace{1em} \tableofcontents[sections=65-72] \vspace{2em} \fi
+\ifnum\totvalue{section}>72 \framebreak
+\vspace{1em} \tableofcontents[sections=73-80] \vspace{2em} \fi
+\ifnum\totvalue{section}>80 \framebreak
+\vspace{1em} \tableofcontents[sections=81-88] \vspace{2em} \fi
+\ifnum\totvalue{section}>88 \framebreak
+\vspace{1em} \tableofcontents[sections=89-96] \vspace{2em} \fi
+\ifnum\totvalue{section}>96 \framebreak
+\vspace{1em} \tableofcontents[sections=97-104] \vspace{2em} \fi
+\end{frame}
+
+\newcommand{\iframe}[1]{
+\section{#1}\begin{frame}[fragile]{#1}\par\vspace{-1em}
+}
+\newcommand{\pframe}[1]{
+\begin{frame}[fragile]{#1}\par\vspace{-1em}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\iframe{Системное программное обеспечение:} 
+\begin{itemize}
+   \setlength\itemsep{2em}
+      \item Языки СПО
+      \item Системные вызовы
+      \item Ввод-вывод
+      \item Потоки и процессы
+   \end{itemize}	
+\end{frame}
+
+\iframe{Программный интерфейс} 
+   \begin{center}
+      Любая программа принимает аргументы и
+      переменные окружения
+   \end{center}	
+   \vspace{1cm} Код возврата – число, отображающее
+   корректность завершения
+\end{frame}
+
+\iframe{Структура программ} 
+\begin{lstlisting}
+int main(
+   int argc,
+   char *argv[],
+   #@\textcolor{gray}{char *envp[]} @
+) {
+   /* ... */
+
+   return 0;
+}
+\end{lstlisting}
+\end{frame}
+
+\pframe{Структура программ} 
+\begin{lstlisting}
+#include <stdlib.h>
+
+int main(
+   int argc,
+   char *argv[],
+   #@\textcolor{gray}{char *envp[]} @
+) {
+   /* ... */
+
+   return EXIT\_SUCCES;
+}
+\end{lstlisting}
+\end{frame}
+
+\iframe{Компиляция программ} 
+\begin{lstlisting}
+# gcc -c program.c
+# gcc -o program program.o
+
+# gcc -o program program.c
+
+# cc -o program program.c
+\end{lstlisting}
+\end{frame}
+
+\iframe{Код возврата} 
+\begin{lstlisting}
+# rm -f /etc/passwd 2<&-
+# echo $?
+1
+# echo Hello, world!
+Hello, world!
+# echo $?
+0
+\end{lstlisting}
+\end{frame}
+
+\pframe{Популярная ошибка} 
+   \begin{center}
+      Использование void main() - недопустимо!
+   \end{center}
+   \lstinputlisting[language=C]{listings/e2.c}
+\end{frame}
+
+\iframe{Роль системы} 
+   \begin{itemize}
+   \setlength\itemsep{1em}
+      \item Многозадачность;
+      \item Виртуализация памяти;
+      \item Управление устройствами;
+      \item Обработка прерываний;
+      \item Расширение набора операций, доступных программам.
+   \end{itemize}
+\end{frame}
+
+\iframe{Системные вызовы}
+   \begin{itemize}
+   \setlength\itemsep{1em}
+      \item Обращение к функции ядра системы
+      \item Использование аппаратного обеспечения через единый API
+      \item Имеют интерфейс libc
+      \item Имеют привилегии ядра операционной системы
+   \end{itemize}
+\end{frame}	
+
+\iframe{Обращение к системе} 
+   \lstinputlisting[language=C]{listings/e3.c}
+\end{frame}			
+
+\iframe{Обращение к системе} 
+   \lstinputlisting[language=C]{listings/e4.c}
+\end{frame}	
+
+\iframe{Файл} 
+   \begin{center}
+      Что такое файл?
+   \end{center}
+   \vspace{2cm} Everything is a file!
+
+   \textit{Кроме потоков и ядра}
+\end{frame}	
+
+\iframe{Дескриптор файл} 
+   \begin{itemize}
+      \item Это целое неотрицательное число, абстрагирующее процессы от файлов, с которыми они работают.
+   \end{itemize}
+\end{frame}	
+
+\input{slides/thanks} % благодарности
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usebackgroundtemplate{}
+\begin{frame}[fragile]
+   \vspace{3em}
+   \centering \LARGE Спасибо за внимание
+
+   \vspace{4em}
+   \begin{tabular}{c}
+      \begin{lstlisting}[basicstyle=\tiny]
+      # perl '-es!!),-#(-.?{<>-8#=..#<-*}>;*7-86)!;y!#()-?{}!\x20/`-v;<!;s++$_+ee'
+      \end{lstlisting} 
+   \end{tabular}
+\end{frame}
+
+\end{document}
