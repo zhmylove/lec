@@ -5,8 +5,8 @@
 \usepackage[utf8]{inputenc}     % UTF-8
 \usepackage[english,russian]{babel}     % russian
 \usepackage{cmap}               % russian search in pdf
-\usepackage{droid}		        % Droid font
-\usepackage{float}		        % essential for [H]
+\usepackage{droid}              % Droid font
+\usepackage{float}              % essential for [H]
 \usepackage{indentfirst}        % first string indention
 \usepackage{graphicx}           % graphics
 \usepackage{ltxtable}           % tables
@@ -28,6 +28,7 @@
 \usepackage{totcount}
 \usepackage{pbox}
 \usepackage{rotating}
+\usepackage{makecell} %TODO add to the preambule
 \lstset{
    escapeinside={\#@}{@},
    extendedchars=\true,
@@ -105,21 +106,39 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\iframe{Системное программное обеспечение:} 
+\pframe{Полезные ссылки}
+   \url{http://src.illumos.org/}
+
+   \begin{large}
+      \begin{center}
+         \url{https://github.com/mit-pdos/xv6-public}
+      \end{center}
+   \end{large}
+
+   \vspace{1em} \url{https://se.ifmo.ru/~korg/} \\
+   \vspace{1em} \url{https://vk.com/korglings} \\
+   \vspace{1em} Литература:
+   \begin{enumerate}
+      \item Uresh Vahalia. UNIX Internals
+      \item A.~S.~Tanenbaum, A.~S.~Woodhull. Operating Systems: Design and Implementation
+   \end{enumerate}
+\end{frame}
+
+\iframe{Системное программное обеспечение}
 \begin{itemize}
    \setlength\itemsep{2em}
       \item Языки СПО
       \item Системные вызовы
       \item Ввод-вывод
       \item Потоки и процессы
-   \end{itemize}	
+   \end{itemize}
 \end{frame}
 
 \iframe{Программный интерфейс} 
    \begin{center}
       Любая программа принимает аргументы и
       переменные окружения
-   \end{center}	
+   \end{center}
    \vspace{1cm} Код возврата – число, отображающее
    корректность завершения
 \end{frame}
@@ -149,7 +168,7 @@ int main(
 ) {
    /* ... */
 
-   return EXIT\_SUCCES;
+   return EXIT_SUCCES;
 }
 \end{lstlisting}
 \end{frame}
@@ -195,6 +214,19 @@ Hello, world!
    \end{itemize}
 \end{frame}
 
+\iframe{Загрузка системы}
+   \begin{itemize}
+   \setlength\itemsep{0.8em}
+      \item Reset vector: UEFI, BIOS, \dots
+      \item I/O, *PIC(IRQ), VGA
+      \item POST + PCI BIOS
+      \item Выбор загрузочного устройства
+      \item Загрузчик stage0 (boot sector)
+      \item Загрузчик stage1
+      \item Ядро ОС
+   \end{itemize}
+\end{frame}
+
 \iframe{Системные вызовы}
    \begin{itemize}
    \setlength\itemsep{1em}
@@ -203,15 +235,21 @@ Hello, world!
       \item Имеют интерфейс libc
       \item Имеют привилегии ядра операционной системы
    \end{itemize}
-\end{frame}	
+\end{frame}
 
 \iframe{Обращение к системе} 
    \lstinputlisting[language=C]{listings/e3.c}
-\end{frame}			
 
-\iframe{Обращение к системе} 
    \lstinputlisting[language=C]{listings/e4.c}
-\end{frame}	
+
+   \begin{lstlisting}
+# cc -m64 -Wall -Wextra -Wno-comment \
+   -nostdlib -o main main.S \end{lstlisting} % =(
+
+   \begin{center}
+      \url{https://pastebin.com/knTdpZRe}
+   \end{center}
+\end{frame}
 
 \iframe{Файл} 
    \begin{center}
@@ -220,13 +258,186 @@ Hello, world!
    \vspace{2cm} Everything is a file!
 
    \textit{Кроме потоков и ядра}
-\end{frame}	
+\end{frame}
 
-\iframe{Дескриптор файл} 
+\iframe{Дескриптор файла} 
+   \begin{normalsize}
+      \url{http://src.illumos.org/source/xref/illumos-gate/usr/src/uts/common/syscall/open.c#54} \\
+      \vspace{1em} \url{http://src.illumos.org/source/xref/illumos-gate/usr/src/uts/common/fs/vnode.c#940}
+   \end{normalsize}
    \begin{itemize}
-      \item Это целое неотрицательное число, абстрагирующее процессы от файлов, с которыми они работают.
+      \item Номер файлового дескриптора -- целое неотрицательное число, абстрагирующее процессы от файлов, с которыми они работают.
    \end{itemize}
-\end{frame}	
+\end{frame}
+
+\iframe{Потоки ввода-вывода процесса}
+   \begin{table}[H]
+      \centering
+      \begin{tabular}{|c|c|c|}
+         \hline
+         \textbf{Номер} & \textbf{Файл} & \textbf{Флаги} \\
+         \hline 0 & /dev/tty & \makecell{O\_RDWR | \\ O\_LARGEFILE} \\ 
+         \hline 1 & /dev/tty & \makecell{O\_RDWR | \\ O\_LARGEFILE} \\ 
+         \hline 2 & /dev/tty & \makecell{O\_RDWR | \\ O\_LARGEFILE} \\ 
+         \hline 3 & /etc/passwd & O\_RDONLY \\
+         \hline 4 & /dev/mtdblock3 & O\_RDWR \\
+         \hline ... & ... & ... \\
+         \hline 255 & ... & ... \\
+         \hline
+      \end{tabular}
+   \end{table}
+\end{frame}
+
+\iframe{Стандартные потоки ввода-вывода} 
+   \lstinputlisting[language=C]{listings/e5.c}
+\end{frame}
+
+\iframe{open(2)} 
+   \begin{lstlisting}
+int open(
+   const char *path,  /* путь к файлу */
+   int oflag,        /* режим доступа */
+   /* mode_t mode */ /* права доступа */
+);
+   \end{lstlisting}
+
+   \vspace{1em} Функция возвращает номер дескриптора или код ошибки
+\end{frame}
+
+\iframe{Основные режимы доступа} 
+   \begin{itemize}
+   \setlength\itemsep{0.7em}
+      \item[] O\_RDONLY -- только для чтения
+      \item[] O\_WRONLY -- только для записи
+      \item[] O\_RDWR -- для записи/чтения
+      \item[] O\_CREAT -- создать, если не существует
+      \item[] O\_APPEND -- запись с конца
+      \item[] O\_TRUNC -- запись с начала 
+      \item[] O\_LARGEFILE -- длинная позиция в файле
+   \end{itemize}
+\end{frame}
+
+\iframe{lseek(2)} 
+   \begin{lstlisting}
+off_t lseek(
+   int fildes, /* номер открытого файла */
+   off_t offset,    /* смещение позиции */
+   int whence               /* действие */
+);
+   \end{lstlisting}
+   
+   \vspace{1em} Функция возвращает полученное смещение в байтах или код ошибки
+\end{frame}
+
+\iframe{read(2)} 
+   \begin{lstlisting}
+ssize_t read(
+   int fildes, /* номер открытого файла */
+   void *buf,           /* буфер чтения */
+   size_t nbyte      /* количество байт */
+);
+   \end{lstlisting}
+   
+   \vspace{1em} Функция возвращает количество прочитанных байт или код ошибки
+\end{frame}
+
+\iframe{write(2)} 
+   \begin{lstlisting}
+ssize_t write(
+   int fildes, /* номер дескриптора */
+   const void *buf, /* буфер записи */
+   size_t nbyte  /* количество байт */
+);
+   \end{lstlisting}
+   
+   \vspace{1em} Функция возвращает количество записанных байт или код ошибки
+\end{frame}
+
+\iframe{close(2)} 
+   \begin{lstlisting}
+int close(
+   int fildes, /* номер дескриптора */
+);
+   \end{lstlisting}
+   
+   \vspace{1em} Функция возвращает 0 или код ошибки
+\end{frame}
+
+\iframe{dup(2) и dup2(2)} 
+   \begin{lstlisting}
+int dup(
+   int fildes /* номер открытого файла */
+);
+int dup2(int fildes, int fildes2);
+   \end{lstlisting}
+   
+   \vspace{1em} Функция возвращает номер нового дескриптора или код ошибки
+\end{frame}
+
+\iframe{stat(2)} 
+   \begin{lstlisting}
+int stat(
+   const char *restrict path,
+      /* путь к файлу*/
+   struct stat *restrict buf 
+      /* результат */
+);
+   \end{lstlisting}
+   
+   \vspace{1em} Функция возвращает номер 0 или код ошибки
+\end{frame}
+
+\iframe{Ошибки в системных вызовах} 
+   \begin{itemize}
+   \setlength\itemsep{1em}
+      \item[] Код возврата системного вызова:
+      \item меньше 0 -- ошибка в ходе выполнения вызова
+      \item равен 0 -- успешное выполнение
+      \item больше 0 -- результат успешного выполнения
+   \end{itemize}
+\end{frame}
+
+\iframe{Стандартизация ошибок} 
+   \begin{itemize}
+   \setlength\itemsep{1em}
+      \item Унификация ошибочных кодов
+      \item Переменная \lstinline{errno}
+      \item Функция \lstinline{perror(3)}
+      \item Функция \lstinline{strerror(3)}
+   \end{itemize}
+\end{frame}
+
+\iframe{Пример ошибки} 
+   \lstinputlisting[language=C]{listings/sl28.c}
+\end{frame}
+
+\iframe{Заголовочные файлы} 
+   \begin{itemize}
+   \setlength\itemsep{1em}
+      \item unistd.h -- объявления UNIX
+      \item stdio.h -- стандартный ввод/вывод
+      \item fcntl.h -- операции с файлами
+      \item sys/types.h -- системные типы
+      \item sys/stat.h -- системные статусы 
+   \end{itemize}
+\end{frame}
+
+\iframe{Пример чтения/записи} 
+   \lstinputlisting[language=C]{listings/sl30.c}
+\end{frame}
+
+\iframe{Makefile} 
+   \lstinputlisting[language=C]{listings/sl31.c}
+\end{frame}
+
+\iframe{Утилита make} 
+   \lstinputlisting[language=C]{listings/sl32.c}
+\end{frame}
+
+\iframe{Ввод-вывод со смещением} 
+   \lstinputlisting[language=C]{listings/sl33.c}
+   \vspace{1em} Функции возвращают количество байт или код ошибки
+\end{frame}
 
 \input{slides/thanks} % благодарности
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,7 +1,9 @@
 PROJS=main
 CC=gcc
 CFLAGS=-m64
+
 all: $(PROJS)
-@echo Done!
+   @echo Done!
+
 $(PROJS):
-$(CC) $(CFLAGS) -o $@ $(@:=.c)
+   $(CC) $(CFLAGS) -o $@ $(@:=.c)
