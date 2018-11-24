@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="svg5739"
+   version="1.1"
+   viewBox="0 0 210 297"
+   height="297mm"
+   width="210mm">
+  <defs
+     id="defs5733" />
+  <metadata
+     id="metadata5736">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1">
+    <rect
+       y="62.871891"
+       x="49.177593"
+       height="18.708866"
+       width="109.04597"
+       id="rect5741"
+       style="opacity:0.99299999;fill:none;fill-opacity:0.96482412;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <rect
+       style="opacity:0.99299999;fill:none;fill-opacity:0.96482412;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect6286"
+       width="109.04597"
+       height="18.708866"
+       x="49.177593"
+       y="173.99628" />
+    <rect
+       y="94.944237"
+       x="65.748306"
+       height="14.432554"
+       width="73.766388"
+       id="rect6288"
+       style="opacity:0.99299999;fill:none;fill-opacity:0.96482412;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <rect
+       style="opacity:0.99299999;fill:none;fill-opacity:0.96482412;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect6290"
+       width="73.766388"
+       height="14.432554"
+       x="65.748306"
+       y="121.93174" />
+    <rect
+       y="147.86063"
+       x="65.748306"
+       height="14.432554"
+       width="73.766388"
+       id="rect6292"
+       style="opacity:0.99299999;fill:none;fill-opacity:0.96482412;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <path
+       id="path6294"
+       d="m 103.70058,81.580759 -0.53454,12.828939 v 0"
+       style="fill:#000000;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       id="path6296"
+       d="m 103.16604,108.84225 v 12.82894 0"
+       style="fill:#000000;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       id="path6298"
+       d="m 102.6315,136.63828 v 11.22532 0"
+       style="fill:#000000;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       id="path6300"
+       d="m 102.6315,162.29616 v 11.75985 0"
+       style="fill:#000000;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <text
+       id="text6524"
+       y="75.166298"
+       x="56.131973"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.26458332"
+         y="75.166298"
+         x="56.131973"
+         id="tspan6522">Вершина потока</tspan></text>
+    <text
+       id="text6528"
+       y="186.35042"
+       x="73.766388"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.26458332"
+         y="186.35042"
+         x="73.766388"
+         id="tspan6526">Устройство</tspan></text>
+    <text
+       id="text6532"
+       y="105.08435"
+       x="79.66243"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.26458332"
+         y="105.08435"
+         x="79.66243"
+         id="tspan6530">Драйвер</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="79.133263"
+       y="132.07178"
+       id="text6536"><tspan
+         id="tspan6534"
+         x="79.133263"
+         y="132.07178"
+         style="stroke-width:0.26458332">Драйвер</tspan></text>
+    <text
+       id="text6540"
+       y="158.00061"
+       x="79.133263"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.26458332"
+         y="158.00061"
+         x="79.133263"
+         id="tspan6538">Драйвер</tspan></text>
+    <text
+       id="text6544"
+       y="42.024872"
+       x="40.624966"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.26458332"
+         y="42.024872"
+         x="40.624966"
+         id="tspan6542">Альтернатива сокетам</tspan></text>
+    <text
+       id="text6548"
+       y="54.853809"
+       x="65.1493"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.26458332"
+         y="54.853809"
+         x="65.1493"
+         id="tspan6546">System V UNIX</tspan></text>
+  </g>
+</svg>

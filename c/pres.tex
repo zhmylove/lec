@@ -306,7 +306,7 @@ int open(
 
 \iframe{Основные режимы доступа} 
    \begin{itemize}
-   \setlength\itemsep{0.7em}
+   \setlength\itemsep{0.6em}
       \item[] O\_RDONLY -- только для чтения
       \item[] O\_WRONLY -- только для записи
       \item[] O\_RDWR -- для записи/чтения
@@ -314,6 +314,7 @@ int open(
       \item[] O\_APPEND -- запись с конца
       \item[] O\_TRUNC -- запись с начала 
       \item[] O\_LARGEFILE -- длинная позиция в файле
+      \item[] O\_EXCL -- длинная позиция в файле
    \end{itemize}
 \end{frame}
 
@@ -381,8 +382,7 @@ int stat(
       /* путь к файлу*/
    struct stat *restrict buf 
       /* результат */
-);
-   \end{lstlisting}
+); \end{lstlisting}
    
    \vspace{1em} Функция возвращает номер 0 или код ошибки
 \end{frame}
@@ -434,9 +434,245 @@ int stat(
    \lstinputlisting[language=C]{listings/sl32.c}
 \end{frame}
 
+\iframe{Полезные функции}
+\begin{itemize}
+	\item isatty(3C) 
+	\item gethostbyname(3NSL) 
+	\item[]gethostbyaddr(3NSL) 
+	\item htons(3SOCKET) 
+	\item[]htonl(3SOCKET) 
+	\item[]ntohs(3SOCKET) 
+	\item[]ntohl(3SOCKET) 
+	\item usleep(3C) 
+\end{itemize}
+\end{frame}
+
 \iframe{Ввод-вывод со смещением} 
    \lstinputlisting[language=C]{listings/sl33.c}
    \vspace{1em} Функции возвращают количество байт или код ошибки
+\end{frame}
+
+\iframe{Рассеянный ввод-вывод} 
+   \begin{lstlisting}
+ssize_t readv(
+   int fildes,   /* дескриптор файла */
+   const struct iovec *iov,
+                  /* массив структур */
+   int iovcnt /* количество структур */
+); \end{lstlisting}
+
+   \vspace{1em} Функция возвращает количество байт или код ошибки
+\end{frame}
+
+\iframe{Структура iovec (I/O vector)} 
+   \lstinputlisting[language=C]{listings/sl35.c}
+\end{frame}
+
+\iframe{Сброс кешей} 
+   \begin{lstlisting}
+void sync(
+   void /* не принимает аргументов */
+); \end{lstlisting}
+
+   \vspace{1em} Код возврата функции не информативен
+\end{frame}
+
+\iframe{Работа с файловыми дескрипторами} 
+   \begin{lstlisting}
+int fcntl(
+   int fildes,          /* дескриптор */
+   int cmd,                /* команда */
+   ... /* переменное число аргументов */
+); \end{lstlisting}
+
+   \vspace{1em} Код возврата функции интерпретируется в зависимости от команды
+\end{frame}
+
+\iframe{Команды fcntl(2)} 
+   F\_DUPFD / F\_DUP2FD \hfill аналог dup/dup2 \\
+   F\_FREESP \hfill освободить место \\
+   F\_GETFD / F\_SETFD \hfill флаг close on exec \\
+   F\_GETFL / F\_SETFL \hfill флаги доступа \\
+   \vspace{1em} F\_GETLK / F\_SETLK \hfill блокировка файла \\
+   F\_GETLKW / F\_SETLKW \hfill
+
+   \begin{center} \vspace{1em} F\_RDLCK / F\_WRLCK / F\_UNLCK \end{center}
+\end{frame}	
+
+\iframe{Проверка доступа} 
+   \begin{lstlisting}
+int access(const char *path, int amode); \end{lstlisting}
+
+   R\_OK – чтение \\
+   W\_OK – запись \\
+   X\_OK – исполнение \\
+   F\_OK – существование
+
+   \vspace{1em} Функция возвращает 0 или код ошибки
+\end{frame}
+
+\iframe{Изменение прав доступа} 
+   \begin{lstlisting}
+int chmod(const char *path, mode_t mode); 
+int fchmod(int fildes, mode_t mode); \end{lstlisting}
+
+   S\_ISUID 04000 \\
+   S\_IRWXU 00700 \\
+   (S\_ISUID | S\_URWXU) 04700 
+
+   \vspace{1em} Функции возвращают 0 или код ошибки
+\end{frame}
+
+\iframe{Изменение владельца} 
+   \begin{lstlisting}
+int chown(
+   const char *path,
+   uid_t owner,
+   gid_t group
+); 
+int fchown(
+   int fildes,
+   uid_t owner,
+   gid_t group
+); \end{lstlisting}
+
+   \vspace{1em} Функции возвращают 0 или код ошибки
+\end{frame}
+
+\iframe{Маска создания файла} 
+   \begin{lstlisting}
+mode_t umask( 
+   mode_t cmask      /* значение маски */ 
+); \end{lstlisting}
+
+   \vspace{1em} Возвращает предыдущее значение маски 
+
+   \begin{center} \vspace{1em} Как получить текущее значение? \end{center}
+\end{frame}
+
+\iframe{Работа с ссылками} 
+   \begin{lstlisting}
+int link( 
+   const char *existing, /* путь к файлу*/
+   const char *new     /* путь к ссылке */
+);  
+int unlink(const char *path); 
+   \end{lstlisting}
+
+   \vspace{1em} Функции возвращают 0 или код ошибки
+\end{frame}
+
+\iframe{Символьные ссылки} 
+   \begin{lstlisting}
+int symlink(
+   const char *name1,  
+   const char *name2
+); 
+
+ssize_t readlink( 
+   const char *restrict path, /* ссылка*/
+   char  *restrict buf,       /* буфер */ 
+   size_t bufsiz      /* размер буфера */ 
+); \end{lstlisting}
+\end{frame}
+
+\iframe{Работа с каталогами} 
+   \begin{lstlisting}
+int mkdir( 
+   const char *path, /* путь к каталогу */
+   mode_t mode       /* режим доступа */
+); 
+int rmdir(const char *path); \end{lstlisting}
+
+   \vspace{1em} Функции возвращают 0 или код ошибки
+\end{frame}
+
+\iframe{Рабочая директория} 
+   \begin{lstlisting}
+int chdir(const char *path); 
+int fchdir(int fildes); \end{lstlisting}
+
+	\vspace{1em} \lstinline{getcwd(3)} возвращает указатель на буфер
+либо -1 и имеет прототип: 
+
+   \begin{lstlisting}
+char *getcwd(char *buf, size_t size); 
+   \end{lstlisting}
+\end{frame}
+
+\iframe{Чтение каталогов} 
+\begin{lstlisting}
+   DIR *opendir(const char *dirname); 
+
+   struct dirent *readdir(DIR *dirp); 
+   
+   void rewinddir(DIR *dirp); 
+   
+   int closedir(DIR *dirp); 
+\end{lstlisting}
+\end{frame}
+
+\iframe{Структура dirent} 
+\begin{lstlisting}
+typedef struct dirent { 
+   ino_t d_ino;
+      /* номер индексного дескриптора */ 
+   off_t d_off; /* смещение от начала */ 
+   unsigned short reclen;
+                      /* длина записи */ 
+   char d_name[];        /* имя файла */ 
+} dirent_t; \end{lstlisting}
+\end{frame}
+
+\iframe{Файлы устройств} 
+\begin{lstlisting}
+int mknod( 
+   const char *path,   /* путь к файлу */
+   mode_t mode, /* режим доступа и тип */
+   dev_t dev             /* устройство */
+); \end{lstlisting}
+
+   \vspace{1em} Функции возвращают 0 или код ошибки
+\end{frame}
+
+\iframe{Модель памяти процесса} 
+\begin{center}
+	\includegraphics[width=0.99\textwidth]{img/mem_model.pdf}
+\end{center}       
+\end{frame}
+
+\iframe{Выделение памяти} 
+	Расширение сегмента данных: 
+   \begin{lstlisting}
+int brk(void *endds); 
+void *sbrk(intptr_t incr); \end{lstlisting}
+
+	\vspace{0.4em} Выделение новых сегментов из анонимной памяти: 
+   \begin{lstlisting}
+void *mmap(
+   void *addr,
+   size_t len,
+   int prot, 
+   int flags,
+   int fildes,
+   off_t off
+); \end{lstlisting}
+\end{frame}
+
+\iframe{Утилита pmap(1)} 
+\lstinputlisting[language=C]{listings/sl52.c}
+\end{frame}
+
+\iframe{Процесс} 
+	Процесс -- это совокупность программы и метаинформации, описывающей её выполнение \textcopyright KorG
+
+	\vspace{1em} Выполняются параллельно и формально независимы друг от друга
+\end{frame}
+
+\iframe{Состояния процесса} 
+\begin{center}
+\includegraphics[width=0.99\textwidth]{img/process_states.pdf}
+\end{center}      
 \end{frame}
 
 \input{slides/thanks} % благодарности
