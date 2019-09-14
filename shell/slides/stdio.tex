@@ -1,17 +1,17 @@
 % vim: ft=tex cc=79 ts=3 sw=3 et
 % 
 % iframe = master frame; pframe = slave frame
-\iframe{Потоки ввода-вывода}
+\iframe{Input-output streams}
 
--- это записи из таблицы дескрипторов открытых файлов для \textbf{процесса}.
+-- entries of the OFDT (open file descriptors table) that belongs to a \textbf{process}.
 
 \begin{table}[H]
 \centering
 \begin{tabular}{|c|c|c|}
 \hline
-\textbf{Номер} & \textbf{Файл} & \textbf{Флаги} \\
-\hline 0 & файл с паролями & чтение \\ 
-\hline 1 & терминал & запись \\
+\textbf{Number} & \textbf{File} & \textbf{Flags} \\
+\hline 0 & passwords file & read-only \\ 
+\hline 1 & terminal & read-write \\
 \hline ... & & \\
 \hline 255 & & \\
 \hline
@@ -19,9 +19,9 @@
 \end{table}
 
 \begin{itemize}
-\item 0 -- стандартный поток ввода (stdin)
-\item 1 -- стандартный поток вывода (stdout)
-\item 2 -- стандартный поток ошибок (stderr)
+\item 0 -- stdin
+\item 1 -- stdout
+\item 2 -- stderr
 \end{itemize}
 
 \end{frame}

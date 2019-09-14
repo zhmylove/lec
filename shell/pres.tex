@@ -55,10 +55,10 @@
 
 \setbeamertemplate{navigation symbols}{}
 
-\title{\LARGE Материалы к лекциям \\ по разработке скриптов, \\
-   интерпретаторам \\ семейства sh и perl \vspace{2em}}
-\author{Жмылёв Сергей Александрович \vspace{-1em}}
-\date{Осень 2018}
+\title{\LARGE Lecture notes on \\ shell-scripting \\
+   and perl language \vspace{2em}}
+\author{Zhmylev Sergei \vspace{-1em}}
+\date{Autumn 2019}
 
 \begin{document} \Large
 
@@ -67,34 +67,34 @@
 \regtotcounter{section}
 \setbeamertemplate{section in toc}{\inserttocsection}
 \setbeamercolor{section in toc}{fg=black}
-\begin{frame}[allowframebreaks]{Структура курса}
-\fontsize{1em}{-1em}\selectfont
-\vspace{1em} \tableofcontents[sections=1-8] \vspace{2em}
-\ifnum\totvalue{section}>8 \framebreak
-\vspace{1em} \tableofcontents[sections=9-16]  \vspace{2em} \fi
-\ifnum\totvalue{section}>16 \framebreak
-\vspace{1em} \tableofcontents[sections=17-24] \vspace{2em} \fi
-\ifnum\totvalue{section}>24 \framebreak
-\vspace{1em} \tableofcontents[sections=25-32] \vspace{2em} \fi
-\ifnum\totvalue{section}>32 \framebreak
-\vspace{1em} \tableofcontents[sections=33-40] \vspace{2em} \fi
-\ifnum\totvalue{section}>40 \framebreak
-\vspace{1em} \tableofcontents[sections=41-48] \vspace{2em} \fi
-\ifnum\totvalue{section}>48 \framebreak
-\vspace{1em} \tableofcontents[sections=49-56] \vspace{2em} \fi
-\ifnum\totvalue{section}>56 \framebreak
-\vspace{1em} \tableofcontents[sections=57-64] \vspace{2em} \fi
-\ifnum\totvalue{section}>64 \framebreak
-\vspace{1em} \tableofcontents[sections=65-72] \vspace{2em} \fi
-\ifnum\totvalue{section}>72 \framebreak
-\vspace{1em} \tableofcontents[sections=73-80] \vspace{2em} \fi
-\ifnum\totvalue{section}>80 \framebreak
-\vspace{1em} \tableofcontents[sections=81-88] \vspace{2em} \fi
-\ifnum\totvalue{section}>88 \framebreak
-\vspace{1em} \tableofcontents[sections=89-96] \vspace{2em} \fi
-\ifnum\totvalue{section}>96 \framebreak
-\vspace{1em} \tableofcontents[sections=97-104] \vspace{2em} \fi
-\end{frame}
+% \begin{frame}[allowframebreaks]{Структура курса}
+% \fontsize{1em}{-1em}\selectfont
+% \vspace{1em} \tableofcontents[sections=1-8] \vspace{2em}
+% \ifnum\totvalue{section}>8 \framebreak
+% \vspace{1em} \tableofcontents[sections=9-16]  \vspace{2em} \fi
+% \ifnum\totvalue{section}>16 \framebreak
+% \vspace{1em} \tableofcontents[sections=17-24] \vspace{2em} \fi
+% \ifnum\totvalue{section}>24 \framebreak
+% \vspace{1em} \tableofcontents[sections=25-32] \vspace{2em} \fi
+% \ifnum\totvalue{section}>32 \framebreak
+% \vspace{1em} \tableofcontents[sections=33-40] \vspace{2em} \fi
+% \ifnum\totvalue{section}>40 \framebreak
+% \vspace{1em} \tableofcontents[sections=41-48] \vspace{2em} \fi
+% \ifnum\totvalue{section}>48 \framebreak
+% \vspace{1em} \tableofcontents[sections=49-56] \vspace{2em} \fi
+% \ifnum\totvalue{section}>56 \framebreak
+% \vspace{1em} \tableofcontents[sections=57-64] \vspace{2em} \fi
+% \ifnum\totvalue{section}>64 \framebreak
+% \vspace{1em} \tableofcontents[sections=65-72] \vspace{2em} \fi
+% \ifnum\totvalue{section}>72 \framebreak
+% \vspace{1em} \tableofcontents[sections=73-80] \vspace{2em} \fi
+% \ifnum\totvalue{section}>80 \framebreak
+% \vspace{1em} \tableofcontents[sections=81-88] \vspace{2em} \fi
+% \ifnum\totvalue{section}>88 \framebreak
+% \vspace{1em} \tableofcontents[sections=89-96] \vspace{2em} \fi
+% \ifnum\totvalue{section}>96 \framebreak
+% \vspace{1em} \tableofcontents[sections=97-104] \vspace{2em} \fi
+% \end{frame}
 
 \newcommand{\iframe}[1]{
 \section{#1}\begin{frame}[fragile]{#1}\par\vspace{-1em}
@@ -114,23 +114,23 @@
 \input{slides/comments} % комментарии
 \input{slides/filesthreads} % Файлы, потоки, ядро
 \input{slides/stdio} % потоки ввода-вывода
-\input{slides/environment} % окружение
+% \input{slides/environment} % окружение
 \input{slides/lexical} % лексическая структура
-\input{slides/quoting} % экранирование
+% \input{slides/quoting} % экранирование
 \input{slides/sh-algorithm} % алгоритм разбора команды
-\input{slides/keywords} % ключевые слова
-\againframe<2>{sh-algorithm}
-\input{slides/alias} % псевдонимы
-\againframe<3>{sh-algorithm}
-\input{slides/simple_cmd} % простая команда
-%\againframe<4>{sh-algorithm}
-\againframe<5>{sh-algorithm}
-\input{slides/stdio} % потоки ввода-вывода
-\input{slides/redir} % перенаправление ввода-вывода
-\againframe<6>{sh-algorithm}
-\input{slides/vars} % переменные и параметры
-\againframe<7>{sh-algorithm}
-\againframe<8>{sh-algorithm}
+% \input{slides/keywords} % ключевые слова
+% \againframe<2>{sh-algorithm}
+% \input{slides/alias} % псевдонимы
+% \againframe<3>{sh-algorithm}
+% \input{slides/simple_cmd} % простая команда
+% %\againframe<4>{sh-algorithm}
+% \againframe<5>{sh-algorithm}
+% \input{slides/stdio} % потоки ввода-вывода
+% \input{slides/redir} % перенаправление ввода-вывода
+% \againframe<6>{sh-algorithm}
+% \input{slides/vars} % переменные и параметры
+% \againframe<7>{sh-algorithm}
+% \againframe<8>{sh-algorithm}
 
 \iframe{Команды: утилиты, функции, ...}
 \end{frame}

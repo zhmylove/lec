@@ -1,14 +1,17 @@
 % vim: ft=tex cc=79 ts=3 sw=3 et
 % 
-\iframe{Командный интерпретатор (shell)}
+\iframe{Shell}
 
--- это утилита, предназначенная для чтения команд из файла или терминального
-устройства, их интерпретации и организации выполнения других утилит.
+-- a software tool designed to:
+\begin{enumerate}
+   \item read commands from file or terminal
+   \item interpret them
+   \item organize execution of programs
+\end{enumerate}
 
 \vspace{1cm}
 
-login shell -- атрибут пользователя, указывающий путь к командному
-интерпретатору, запускаемому при входе.
+login shell -- user property that defines a default command being executed on logon.
 \begin{lstlisting}
 $ getent passwd korg |cut -d: -f7
 /usr/bin/bash
@@ -16,15 +19,15 @@ $ getent passwd korg |cut -d: -f7
 
 \end{frame}
 
-\pframe{Основные функции shell}
+\pframe{Shell basic functionality}
 
 \begin{itemize}
-\item Управление потоком выполнения команд
-\\... в т.ч., их автоматизация
-\item Работа с <<макро-подстановками>>
-\item Управление командной строкой (редактирование, readline, ...)
-\item Поддержка истории выполненных команд
-\item Исполнение командных файлов
+\item Command flow control
+\\... and their automation.
+\item Macro substitutions
+\item Command line management (edit, libreadline, ...)
+\item History of executed commands
+\item Scripts execution
 \end{itemize}
 
 \end{frame}
