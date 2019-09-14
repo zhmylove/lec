@@ -1,3 +1,4 @@
-pdflatex pres.tex
-pdflatex pres.tex
-pres.pdf
+pdflatex --shell-escape -jobname presRUS pres.tex
+pdflatex --shell-escape -jobname presRUS pres.tex
+pdflatex --shell-escape -jobname presENG pres.tex
+pdflatex --shell-escape -jobname presENG pres.tex

@@ -56,10 +56,33 @@
 
 \setbeamertemplate{navigation symbols}{}
 
+\selectlanguage{english}
+%\selectlanguage{russian} % ? comment out?
+
+\makeatletter
+\ifnum\pdf@strcmp{\jobname}{presRUS}=0 \def\LANG{3} \else \def\LANG{2} \fi
+\makeatother
+
+\newcommand{\Rus}[1]{\if\LANG3
+#1
+\fi }
+\newcommand{\Eng}[1]{\if\LANG2
+#1
+\fi }
+
+
+\Eng{
+\title{\LARGE Lecture materials \\ on system \\
+   software development \vspace{2em}}
+\author{Zhmylev Sergei \vspace{-1em}}
+\date{Autumn 2019}
+}
+\Rus{
 \title{\LARGE Материалы к лекциям \\ по основам \\
    системного программирования \vspace{2em}}
 \author{Жмылёв Сергей Александрович \vspace{-1em}}
-\date{Осень 2018}
+\date{Осень 2019}
+}
 
 \begin{document} \Large
 
