@@ -662,7 +662,14 @@ int mknod(
 
 \iframe{\Rus{Модель памяти процесса}\Eng{Memory model of a process}} 
 \begin{center}
-	\includegraphics[width=0.99\textwidth]{img/mem_model.pdf}
+	
+	{\if\LANG3
+		\includegraphics[width=0.99\textwidth]{img/mem_model_ru.pdf}
+	\fi }
+	{\if\LANG2
+		\includegraphics[width=0.99\textwidth]{img/mem_model_en.pdf}
+	\fi }
+
 \end{center}       
 \end{frame}
 
@@ -697,7 +704,14 @@ void *mmap(
 
 \iframe{\Rus{Состояния процесса}\Eng{Process states}}
 \begin{center}
-\includegraphics[width=0.99\textwidth]{img/process_states.pdf}
+	
+	{\if\LANG3
+		\includegraphics[width=0.99\textwidth]{img/process_states_ru.pdf}
+		\fi }
+	{\if\LANG2
+		\includegraphics[width=0.99\textwidth]{img/process_states_en.pdf}
+	\fi }
+	
 \end{center}      
 \end{frame}
 
