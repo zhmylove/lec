@@ -323,14 +323,8 @@ Hello, world!
 \end{frame}
 
 \iframe{ open(2)}
-
-\begin{lstlisting}
-int open(
-   const char *path,  /* file path */
-   int oflag,        /* access mode */
-   /* mode_t mode */ /* access rights */
-);
-\end{lstlisting}
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/open.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/open.ru.c}}
 
    \vspace{1em} \Rus{Функция возвращает номер дескриптора или код ошибки}\Eng{Returns a file descriptor number or an error code}
 \end{frame}
@@ -350,70 +344,44 @@ int open(
 \end{frame}
 
 \iframe{ lseek(2)} 
-   \begin{lstlisting}
-off_t lseek(
-   int fildes, /* номер открытого файла */
-   off_t offset,    /* смещение позиции */
-   int whence               /* действие */
-);
-   \end{lstlisting}
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/lseek.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/lseek.ru.c}}
    
    \vspace{1em} \Rus{Функция возвращает полученное смещение в байтах или код ошибки}\Eng{Returns an updated offset in bytes or an error code}
 \end{frame}
 
 \iframe{ read(2)} 
-   \begin{lstlisting}
-ssize_t read(
-   int fildes, /* номер открытого файла */
-   void *buf,           /* буфер чтения */
-   size_t nbyte      /* количество байт */
-);
-   \end{lstlisting}
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/read.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/read.ru.c}}
    
    \vspace{1em} \Rus{Функция возвращает количество прочитанных байт или код ошибки}\Eng{Returns the amount of bytes read successfully or an error code}
 \end{frame}
 
 \iframe{ write(2)} 
-   \begin{lstlisting}
-ssize_t write(
-   int fildes, /* номер дескриптора */
-   const void *buf, /* буфер записи */
-   size_t nbyte  /* количество байт */
-);
-   \end{lstlisting}
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/write.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/write.ru.c}}
    
    \vspace{1em} \Rus{Функция возвращает количество записанных байт или код ошибки}\Eng{Returns the amount of bytes written successfully or an error code}
 \end{frame}
 
 \iframe{ close(2)} 
-   \begin{lstlisting}
-int close(
-   int fildes, /* номер дескриптора */
-);
-   \end{lstlisting}
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/close.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/close.ru.c}}
    
    \vspace{1em} \Rus{Функция возвращает 0 или код ошибки}\Eng{Returns zero or an error code}
 \end{frame}
 
 \iframe{ dup(2)\Rus{и}\Eng{and} dup2(2)} 
-   \begin{lstlisting}
-int dup(
-   int fildes /* номер открытого файла */
-);
-int dup2(int fildes, int fildes2);
-   \end{lstlisting}
+
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/dup.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/dup.ru.c}}
    
    \vspace{1em} \Rus{Функция возвращает номер нового дескриптора или код ошибки}\Eng{Returns a number of a new file descriptor or an error code}
 \end{frame}
 
 \iframe{ stat(2)} 
-   \begin{lstlisting}
-int stat(
-   const char *restrict path,
-      /* путь к файлу*/
-   struct stat *restrict buf 
-      /* результат */
-); \end{lstlisting}
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/stat.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/stat.ru.c}}
    
    \vspace{1em} \Rus{Функция возвращает номер 0 или код ошибки}\Eng{Returns zero or an error code}
 \end{frame}
@@ -484,13 +452,8 @@ int stat(
 \end{frame}
 
 \iframe{\Rus{Рассеянный ввод-вывод}\Eng{Useful functions}} 
-   \begin{lstlisting}
-ssize_t readv(
-   int fildes,   /* дескриптор файла */
-   const struct iovec *iov,
-                  /* массив структур */
-   int iovcnt /* количество структур */
-); \end{lstlisting}
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/readv.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/readv.ru.c}}
 
    \vspace{1em} \Rus{Функция возвращает количество байт или код ошибки}\Eng{Returns the amount of bytes or an error code}
 \end{frame}
@@ -500,21 +463,15 @@ ssize_t readv(
 \end{frame}
 
 \iframe{\Rus{Сброс кешей}\Eng{Cache flushing}} 
-   \begin{lstlisting}
-void sync(
-   void /* не принимает аргументов */
-); \end{lstlisting}
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/sync.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/sync.ru.c}}
 
    \vspace{1em} \Rus{Код возврата функции не информативен}\Eng{Return code is meaningless}
 \end{frame}
 
 \iframe{\Rus{Работа с файловыми дескрипторами}\Eng{Working with file descriptors}} 
-   \begin{lstlisting}
-int fcntl(
-   int fildes,          /* дескриптор */
-   int cmd,                /* команда */
-   ... /* переменное число аргументов */
-); \end{lstlisting}
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/fcntl.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/fcntl.ru.c}}
 
    \vspace{1em} \Rus{Код возврата функции интерпретируется в зависимости от команды}\Eng{Return code meaning depends on a particular command}
 \end{frame}
@@ -571,10 +528,8 @@ int fchown(
 \end{frame}
 
 \iframe{\Rus{Маска создания файла}\Eng{File creation mask}} 
-   \begin{lstlisting}
-mode_t umask( 
-   mode_t cmask      /* значение маски */ 
-); \end{lstlisting}
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/umask.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/umask.ru.c}}
 
    \vspace{1em} \Rus{Возвращает предыдущее значение маски}\Eng{Returns the previous mask value} 
 
@@ -582,39 +537,20 @@ mode_t umask(
 \end{frame}
 
 \iframe{\Rus{Работа с ссылками}\Eng{Working with links}}
-   \begin{lstlisting}
-int link( 
-   const char *existing, /* путь к файлу*/
-   const char *new     /* путь к ссылке */
-);  
-int unlink(const char *path); 
-   \end{lstlisting}
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/link.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/link.ru.c}}
 
    \vspace{1em} \Rus{Функции возвращают 0 или код ошибки}\Eng{Returns zero or an error code}
 \end{frame}
 
 \iframe{\Rus{Символьные ссылки}\Eng{Symbolic links}} 
-   \begin{lstlisting}
-int symlink(
-   const char *name1,  
-   const char *name2
-); 
-
-ssize_t readlink( 
-   const char *restrict path, /* ссылка*/
-   char  *restrict buf,       /* буфер */ 
-   size_t bufsiz      /* размер буфера */ 
-); \end{lstlisting}
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/symlink.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/symlink.ru.c}}
 \end{frame}
 
 \iframe{\Rus{Работа с каталогами}\Eng{Working with directories}} 
-   \begin{lstlisting}
-int mkdir( 
-   const char *path, /* путь к каталогу */
-   mode_t mode       /* режим доступа */
-); 
-int rmdir(const char *path); \end{lstlisting}
-
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/mkdir.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/mkdir.ru.c}}
    \vspace{1em} \Rus{Функции возвращают 0 или код ошибки}\Eng{Returns zero or an error code}
 \end{frame}
 
@@ -645,24 +581,13 @@ char *getcwd(char *buf, size_t size);
 \end{frame}
 
 \iframe{\Rus{Структура dirent}\Eng{dirent structure}} 
-\begin{lstlisting}
-typedef struct dirent { 
-   ino_t d_ino;
-      /* номер индексного дескриптора */ 
-   off_t d_off; /* смещение от начала */ 
-   unsigned short reclen;
-                      /* длина записи */ 
-   char d_name[];        /* имя файла */ 
-} dirent_t; \end{lstlisting}
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/dirent.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/dirent.ru.c}}
 \end{frame}
 
 \iframe{\Rus{Файлы устройств}\Eng{Device files}} 
-\begin{lstlisting}
-int mknod( 
-   const char *path,   /* путь к файлу */
-   mode_t mode, /* режим доступа и тип */
-   dev_t dev             /* устройство */
-); \end{lstlisting}
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/mknod.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/mknod.ru.c}}
 
    \vspace{1em} \Rus{Функции возвращают 0 или код ошибки}\Eng{Returns zero or an error code}
 \end{frame}
