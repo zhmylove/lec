@@ -91,7 +91,7 @@
 \regtotcounter{section}
 \setbeamertemplate{section in toc}{\inserttocsection}
 \setbeamercolor{section in toc}{fg=black}
-\begin{frame}[allowframebreaks]{Структура курса}
+\begin{frame}[allowframebreaks]{\Rus{Структура курса}\Eng{Course structure}}
 \fontsize{1em}{-1em}\selectfont
 \vspace{1em} \tableofcontents[sections=1-8] \vspace{2em}
 \ifnum\totvalue{section}>8 \framebreak
@@ -129,7 +129,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\pframe{Полезные ссылки}
+\pframe{\Rus{Полезные ссылки}\Eng{Useful links}}
    \url{http://src.illumos.org/}
 
    \begin{large}
@@ -140,33 +140,33 @@
 
    \vspace{1em} \url{https://se.ifmo.ru/~korg/} \\
    \vspace{1em} \url{https://vk.com/korglings} \\
-   \vspace{1em} Литература:
+   \vspace{1em} \Rus{Литература}\Eng{Books}:
    \begin{enumerate}
       \item Uresh Vahalia. UNIX Internals
       \item A.~S.~Tanenbaum, A.~S.~Woodhull. Operating Systems: Design and Implementation
    \end{enumerate}
 \end{frame}
 
-\iframe{Системное программное обеспечение}
+\iframe{\Rus{Системное программное обеспечение}\Eng{System software}}
 \begin{itemize}
    \setlength\itemsep{2em}
-      \item Языки СПО
-      \item Системные вызовы
-      \item Ввод-вывод
-      \item Потоки и процессы
+      \item \Rus{Языки СПО}\Eng{System software languages}
+      \item \Rus{Системные вызовы}\Eng{Syscalls}
+      \item \Rus{Ввод-вывод}\Eng{I/O}
+      \item \Rus{Потоки и процессы}\Eng{Threads and processes}
    \end{itemize}
 \end{frame}
 
-\iframe{Программный интерфейс} 
+\iframe{\Rus{Программный интерфейс}\Eng{Software interface}}
    \begin{center}
-      Любая программа принимает аргументы и
-      переменные окружения
+      \Rus{Любая программа принимает аргументы и}\Eng{Each program receives arguments and}
+      \Rus{переменные окружения}\Eng{environment variables}
    \end{center}
-   \vspace{1cm} Код возврата – число, отображающее
-   корректность завершения
+   \vspace{1cm} \Rus{Код возврата – число, отображающее}\Eng{Error code is an integer describing the}
+   \Rus{корректность завершения}\Eng{correctness of program termination}
 \end{frame}
 
-\iframe{Структура программ} 
+\iframe{\Rus{Структура программ}\Eng{Code structure}}
 \begin{lstlisting}
 int main(
    int argc,
@@ -180,7 +180,7 @@ int main(
 \end{lstlisting}
 \end{frame}
 
-\pframe{Структура программ} 
+\pframe{\Rus{Структура программ}\Eng{Code structure}} 
 \begin{lstlisting}
 #include <stdlib.h>
 
@@ -196,7 +196,7 @@ int main(
 \end{lstlisting}
 \end{frame}
 
-\iframe{Компиляция программ} 
+\iframe{\Rus{Компиляция программ}\Eng{Code compilation}} 
 \begin{lstlisting}
 # gcc -c program.c
 # gcc -o program program.o
@@ -207,7 +207,7 @@ int main(
 \end{lstlisting}
 \end{frame}
 
-\iframe{Код возврата} 
+\iframe{\Rus{Код возврата}\Eng{Error code}}
 \begin{lstlisting}
 # rm -f /etc/passwd 2<&-
 # echo $?
@@ -219,9 +219,9 @@ Hello, world!
 \end{lstlisting}
 \end{frame}
 
-\pframe{Популярная ошибка} 
+\pframe{\Rus{Популярная ошибка}\Eng{A popular mistake}}
    \begin{center}
-      Использование void main() - недопустимо!
+      \Rus{Использование void main() - недопустимо!}\Eng{Using void main() is inappropriate!}
    \end{center}
    \lstinputlisting[language=C]{listings/e2.c}
 \end{frame}
