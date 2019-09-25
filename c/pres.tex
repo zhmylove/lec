@@ -47,7 +47,14 @@
 \usebackgroundtemplate{
    \begin{picture}(0,260)
       \minipage{0.9\textwidth}
-      \includegraphics[width=0.6\textwidth]{ifmo.jpg} %TODO check file path
+      
+      {\if\LANG3
+      	\includegraphics[width=0.6\textwidth]{ifmo_ru.jpg}
+      \fi }
+      {\if\LANG2
+      	\includegraphics[width=0.6\textwidth]{ifmo_en.jpg}
+      \fi }
+      
       \endminipage
       \hfill \hspace*{60px}
       \ifnum\value{framenumber}>1 \Large \insertpagenumber \fi
