@@ -322,7 +322,7 @@ Hello, world!
    \lstinputlisting[language=C]{listings/e5.c}
 \end{frame}
 
-\iframe{open(2)}
+\iframe{ open(2)}
 
 \begin{lstlisting}
 int open(
@@ -349,7 +349,7 @@ int open(
    \end{itemize}
 \end{frame}
 
-\iframe{lseek(2)} 
+\iframe{ lseek(2)} 
    \begin{lstlisting}
 off_t lseek(
    int fildes, /* номер открытого файла */
@@ -361,7 +361,7 @@ off_t lseek(
    \vspace{1em} \Rus{Функция возвращает полученное смещение в байтах или код ошибки}\Eng{Returns an updated offset in bytes or an error code}
 \end{frame}
 
-\iframe{read(2)} 
+\iframe{ read(2)} 
    \begin{lstlisting}
 ssize_t read(
    int fildes, /* номер открытого файла */
@@ -373,7 +373,7 @@ ssize_t read(
    \vspace{1em} \Rus{Функция возвращает количество прочитанных байт или код ошибки}\Eng{Returns the amount of bytes read successfully or an error code}
 \end{frame}
 
-\iframe{write(2)} 
+\iframe{ write(2)} 
    \begin{lstlisting}
 ssize_t write(
    int fildes, /* номер дескриптора */
@@ -385,7 +385,7 @@ ssize_t write(
    \vspace{1em} \Rus{Функция возвращает количество записанных байт или код ошибки}\Eng{Returns the amount of bytes written successfully or an error code}
 \end{frame}
 
-\iframe{close(2)} 
+\iframe{ close(2)} 
    \begin{lstlisting}
 int close(
    int fildes, /* номер дескриптора */
@@ -395,7 +395,7 @@ int close(
    \vspace{1em} \Rus{Функция возвращает 0 или код ошибки}\Eng{Returns zero or an error code}
 \end{frame}
 
-\iframe{dup(2) и dup2(2)} 
+\iframe{ dup(2)\Rus{и}\Eng{and} dup2(2)} 
    \begin{lstlisting}
 int dup(
    int fildes /* номер открытого файла */
@@ -406,7 +406,7 @@ int dup2(int fildes, int fildes2);
    \vspace{1em} \Rus{Функция возвращает номер нового дескриптора или код ошибки}\Eng{Returns a number of a new file descriptor or an error code}
 \end{frame}
 
-\iframe{stat(2)} 
+\iframe{ stat(2)} 
    \begin{lstlisting}
 int stat(
    const char *restrict path,
@@ -457,7 +457,7 @@ int stat(
    \lstinputlisting[language=C]{listings/sl30.c}
 \end{frame}
 
-\iframe{Makefile} 
+\iframe{ Makefile} 
    \lstinputlisting[language=C]{listings/sl31.c}
 \end{frame}
 
