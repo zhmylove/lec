@@ -226,42 +226,42 @@ Hello, world!
    \lstinputlisting[language=C]{listings/e2.c}
 \end{frame}
 
-\iframe{Роль системы} 
+\iframe{\Rus{Роль системы}\Eng{A role of the OS}}
    \begin{itemize}
    \setlength\itemsep{1em}
-      \item Многозадачность;
-      \item Виртуализация памяти;
-      \item Управление устройствами;
-      \item Обработка прерываний;
-      \item Расширение набора операций, доступных программам.
+      \item \Rus{Многозадачность;}\Eng{Multitasking;}
+      \item \Rus{Виртуализация памяти;}\Eng{Memory virtualization;}
+      \item \Rus{Управление устройствами;}\Eng{Device management;}
+      \item \Rus{Обработка прерываний;}\Eng{Interrupt handling;}
+      \item \Rus{Расширение набора операций, доступных программам.}\Eng{Extending the available set of application-level operations.}
    \end{itemize}
 \end{frame}
 
-\iframe{Загрузка системы}
+\iframe{\Rus{Загрузка системы}\Eng{OS booting process}}
    \begin{itemize}
    \setlength\itemsep{0.8em}
       \item Reset vector: UEFI, BIOS, \dots
       \item I/O, *PIC(IRQ), VGA
       \item POST + PCI BIOS
-      \item Выбор загрузочного устройства
-      \item Загрузчик stage0 (boot sector)
-      \item Загрузчик stage1
-      \item Ядро ОС
+      \item \Rus{Выбор загрузочного устройства}\Eng{Boot device detection}
+      \item \Rus{Загрузчик stage0 (boot sector)}\Eng{Bootloader stage0 (boot sector)}
+      \item \Rus{Загрузчик stage1}\Eng{Bootloader stage1}
+      \item \Rus{Ядро ОС}\Eng{OS kernel}
    \end{itemize}
 \end{frame}
 
-\iframe{Системные вызовы}
+\iframe{\Rus{Системные вызовы}\Eng{Syscalls}}
    \begin{itemize}
    \setlength\itemsep{1em}
-      \item Обращение к функции ядра системы
-      \item Использование аппаратного обеспечения через единый API
-      \item Имеют интерфейс libc
-      \item Имеют привилегии ядра операционной системы
+      \item \Rus{Обращение к функции ядра системы}\Eng{Kernel functions calling}
+      \item \Rus{Использование аппаратного обеспечения через единый API}\Eng{Using hardware via the common API}
+      \item \Rus{Имеют интерфейс libc}\Eng{Have libc interfaces}
+      \item \Rus{Имеют привилегии ядра операционной системы}\Eng{Have kernel privileges}
    \end{itemize}
 \end{frame}
 
-\iframe{Обращение к системе} 
-   \lstinputlisting[language=C]{listings/e3.c}
+\iframe{\Rus{Обращение к системе}\Eng{Calling the OS}}
+   \Rus{\lstinputlisting[language=C]{listings/e3rus.c}}\Eng{\lstinputlisting[language=C]{listings/e3eng.c}}
 
    \lstinputlisting[language=C]{listings/e4.c}
 
@@ -274,31 +274,31 @@ Hello, world!
    \end{center}
 \end{frame}
 
-\iframe{Файл} 
+\iframe{\Rus{Файл}\Eng{File}}
    \begin{center}
-      Что такое файл?
+      \Rus{Что такое файл?}\Eng{What is a file?}
    \end{center}
    \vspace{2cm} Everything is a file!
 
-   \textit{Кроме потоков и ядра}
+   \textit{\Rus{Кроме потоков и ядра}\Eng{Apart from threads and the kernel}}
 \end{frame}
 
-\iframe{Дескриптор файла} 
+\iframe{\Rus{Дескриптор файла}\Eng{File descriptor}}
    \begin{normalsize}
       \url{http://src.illumos.org/source/xref/illumos-gate/usr/src/uts/common/syscall/open.c#54} \\
       \vspace{1em} \url{http://src.illumos.org/source/xref/illumos-gate/usr/src/uts/common/fs/vnode.c#940}
    \end{normalsize}
    \begin{itemize}
-      \item Номер файлового дескриптора -- целое неотрицательное число, абстрагирующее процессы от файлов, с которыми они работают.
+      \item \Rus{Номер файлового дескриптора -- целое неотрицательное число, абстрагирующее процессы от файлов, с которыми они работают.}\Eng{A file descriptor number is a positive integer that abstracts processes from files they are using.}
    \end{itemize}
 \end{frame}
 
-\iframe{Потоки ввода-вывода процесса}
+\iframe{\Rus{Потоки ввода-вывода процесса}\Eng{I/O streams of a process}}
    \begin{table}[H]
       \centering
       \begin{tabular}{|c|c|c|}
          \hline
-         \textbf{Номер} & \textbf{Файл} & \textbf{Флаги} \\
+         \textbf{\Rus{Номер}\Eng{Number}} & \textbf{\Rus{Файл}\Eng{File}} & \textbf{\Rus{Флаги}\Eng{Flags}} \\
          \hline 0 & /dev/tty & \makecell{O\_RDWR | \\ O\_LARGEFILE} \\ 
          \hline 1 & /dev/tty & \makecell{O\_RDWR | \\ O\_LARGEFILE} \\ 
          \hline 2 & /dev/tty & \makecell{O\_RDWR | \\ O\_LARGEFILE} \\ 
@@ -311,33 +311,34 @@ Hello, world!
    \end{table}
 \end{frame}
 
-\iframe{Стандартные потоки ввода-вывода} 
+\iframe{\Rus{Стандартные потоки ввода-вывода}\Eng{Standard I/O streams}}
    \lstinputlisting[language=C]{listings/e5.c}
 \end{frame}
 
-\iframe{open(2)} 
-   \begin{lstlisting}
-int open(
-   const char *path,  /* путь к файлу */
-   int oflag,        /* режим доступа */
-   /* mode_t mode */ /* права доступа */
-);
-   \end{lstlisting}
+\iframe{open(2)}
 
-   \vspace{1em} Функция возвращает номер дескриптора или код ошибки
+\begin{lstlisting}
+int open(
+   const char *path,  /* file path */
+   int oflag,        /* access mode */
+   /* mode_t mode */ /* access rights */
+);
+\end{lstlisting}
+
+   \vspace{1em} \Rus{Функция возвращает номер дескриптора или код ошибки}\Eng{Returns a file descriptor number or an error code}
 \end{frame}
 
-\iframe{Основные режимы доступа} 
+\iframe{\Rus{Основные режимы доступа}\Eng{Common access modes}}
    \begin{itemize}
    \setlength\itemsep{0.6em}
-      \item[] O\_RDONLY -- только для чтения
-      \item[] O\_WRONLY -- только для записи
-      \item[] O\_RDWR -- для записи/чтения
-      \item[] O\_CREAT -- создать, если не существует
-      \item[] O\_APPEND -- запись с конца
-      \item[] O\_TRUNC -- запись с начала 
-      \item[] O\_LARGEFILE -- длинная позиция в файле
-      \item[] O\_EXCL -- длинная позиция в файле
+      \item[] O\_RDONLY -- \Rus{только для чтения}\Eng{Read-only}
+      \item[] O\_WRONLY -- \Rus{только для записи}\Eng{Write-only}
+      \item[] O\_RDWR -- \Rus{для записи/чтения}\Eng{Read-write}
+      \item[] O\_CREAT -- \Rus{создать, если не существует}\Eng{Create if not exists}
+      \item[] O\_APPEND -- \Rus{запись с конца}\Eng{Append to the end of the file}
+      \item[] O\_TRUNC -- \Rus{запись с начала}\Eng{Write from the beginning of the file}
+      \item[] O\_LARGEFILE -- \Rus{длинная позиция в файле}\Eng{Long file position}
+      \item[] O\_EXCL -- \Rus{длинная позиция в файле}\Eng{Long file position}
    \end{itemize}
 \end{frame}
 
@@ -350,7 +351,7 @@ off_t lseek(
 );
    \end{lstlisting}
    
-   \vspace{1em} Функция возвращает полученное смещение в байтах или код ошибки
+   \vspace{1em} \Rus{Функция возвращает полученное смещение в байтах или код ошибки}\Eng{Returns an updated offset in bytes or an error code}
 \end{frame}
 
 \iframe{read(2)} 
@@ -362,7 +363,7 @@ ssize_t read(
 );
    \end{lstlisting}
    
-   \vspace{1em} Функция возвращает количество прочитанных байт или код ошибки
+   \vspace{1em} \Rus{Функция возвращает количество прочитанных байт или код ошибки}\Eng{Returns the amount of bytes read successfully or an error code}
 \end{frame}
 
 \iframe{write(2)} 
@@ -374,7 +375,7 @@ ssize_t write(
 );
    \end{lstlisting}
    
-   \vspace{1em} Функция возвращает количество записанных байт или код ошибки
+   \vspace{1em} \Rus{Функция возвращает количество записанных байт или код ошибки}\Eng{Returns the amount of bytes written successfully or an error code}
 \end{frame}
 
 \iframe{close(2)} 
@@ -384,7 +385,7 @@ int close(
 );
    \end{lstlisting}
    
-   \vspace{1em} Функция возвращает 0 или код ошибки
+   \vspace{1em} \Rus{Функция возвращает 0 или код ошибки}\Eng{Returns zero or an error code}
 \end{frame}
 
 \iframe{dup(2) и dup2(2)} 
