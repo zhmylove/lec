@@ -47,7 +47,14 @@
 \usebackgroundtemplate{
    \begin{picture}(0,260)
       \minipage{0.9\textwidth}
-      \includegraphics[width=0.6\textwidth]{ifmo.jpg} %TODO check file path
+      
+      {\if\LANG3
+      	\includegraphics[width=0.6\textwidth]{ifmo_ru.jpg}
+      \fi }
+      {\if\LANG2
+      	\includegraphics[width=0.6\textwidth]{ifmo_en.jpg}
+      \fi }
+      
       \endminipage
       \hfill \hspace*{60px}
       \ifnum\value{framenumber}>1 \Large \insertpagenumber \fi
@@ -91,7 +98,7 @@
 \regtotcounter{section}
 \setbeamertemplate{section in toc}{\inserttocsection}
 \setbeamercolor{section in toc}{fg=black}
-\begin{frame}[allowframebreaks]{Структура курса}
+\begin{frame}[allowframebreaks]{\Rus{Структура курса}\Eng{Course structure}}
 \fontsize{1em}{-1em}\selectfont
 \vspace{1em} \tableofcontents[sections=1-8] \vspace{2em}
 \ifnum\totvalue{section}>8 \framebreak
@@ -129,7 +136,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\pframe{Полезные ссылки}
+\pframe{\Rus{Полезные ссылки}\Eng{Useful links}}
    \url{http://src.illumos.org/}
 
    \begin{large}
@@ -140,33 +147,33 @@
 
    \vspace{1em} \url{https://se.ifmo.ru/~korg/} \\
    \vspace{1em} \url{https://vk.com/korglings} \\
-   \vspace{1em} Литература:
+   \vspace{1em} \Rus{Литература}\Eng{Books}:
    \begin{enumerate}
       \item Uresh Vahalia. UNIX Internals
       \item A.~S.~Tanenbaum, A.~S.~Woodhull. Operating Systems: Design and Implementation
    \end{enumerate}
 \end{frame}
 
-\iframe{Системное программное обеспечение}
+\iframe{\Rus{Системное программное обеспечение}\Eng{System software}}
 \begin{itemize}
    \setlength\itemsep{2em}
-      \item Языки СПО
-      \item Системные вызовы
-      \item Ввод-вывод
-      \item Потоки и процессы
+      \item \Rus{Языки СПО}\Eng{System software languages}
+      \item \Rus{Системные вызовы}\Eng{Syscalls}
+      \item \Rus{Ввод-вывод}\Eng{I/O}
+      \item \Rus{Потоки и процессы}\Eng{Threads and processes}
    \end{itemize}
 \end{frame}
 
-\iframe{Программный интерфейс} 
+\iframe{\Rus{Программный интерфейс}\Eng{Software interface}}
    \begin{center}
-      Любая программа принимает аргументы и
-      переменные окружения
+      \Rus{Любая программа принимает аргументы и}\Eng{Each program receives arguments and}
+      \Rus{переменные окружения}\Eng{environment variables}
    \end{center}
-   \vspace{1cm} Код возврата – число, отображающее
-   корректность завершения
+   \vspace{1cm} \Rus{Код возврата – число, отображающее}\Eng{Error code is an integer describing the}
+   \Rus{корректность завершения}\Eng{correctness of program termination}
 \end{frame}
 
-\iframe{Структура программ} 
+\iframe{\Rus{Структура программ}\Eng{Code structure}}
 \begin{lstlisting}
 int main(
    int argc,
@@ -180,7 +187,7 @@ int main(
 \end{lstlisting}
 \end{frame}
 
-\pframe{Структура программ} 
+\pframe{\Rus{Структура программ}\Eng{Code structure}} 
 \begin{lstlisting}
 #include <stdlib.h>
 
@@ -196,7 +203,7 @@ int main(
 \end{lstlisting}
 \end{frame}
 
-\iframe{Компиляция программ} 
+\iframe{\Rus{Компиляция программ}\Eng{Code compilation}} 
 \begin{lstlisting}
 # gcc -c program.c
 # gcc -o program program.o
@@ -207,7 +214,7 @@ int main(
 \end{lstlisting}
 \end{frame}
 
-\iframe{Код возврата} 
+\iframe{\Rus{Код возврата}\Eng{Error code}}
 \begin{lstlisting}
 # rm -f /etc/passwd 2<&-
 # echo $?
@@ -219,49 +226,49 @@ Hello, world!
 \end{lstlisting}
 \end{frame}
 
-\pframe{Популярная ошибка} 
+\pframe{\Rus{Популярная ошибка}\Eng{A popular mistake}}
    \begin{center}
-      Использование void main() - недопустимо!
+      \Rus{Использование void main() - недопустимо!}\Eng{Using void main() is inappropriate!}
    \end{center}
    \lstinputlisting[language=C]{listings/e2.c}
 \end{frame}
 
-\iframe{Роль системы} 
+\iframe{\Rus{Роль системы}\Eng{A role of the OS}}
    \begin{itemize}
    \setlength\itemsep{1em}
-      \item Многозадачность;
-      \item Виртуализация памяти;
-      \item Управление устройствами;
-      \item Обработка прерываний;
-      \item Расширение набора операций, доступных программам.
+      \item \Rus{Многозадачность;}\Eng{Multitasking;}
+      \item \Rus{Виртуализация памяти;}\Eng{Memory virtualization;}
+      \item \Rus{Управление устройствами;}\Eng{Device management;}
+      \item \Rus{Обработка прерываний;}\Eng{Interrupt handling;}
+      \item \Rus{Расширение набора операций, доступных программам.}\Eng{Extending the available set of application-level operations.}
    \end{itemize}
 \end{frame}
 
-\iframe{Загрузка системы}
+\iframe{\Rus{Загрузка системы}\Eng{OS booting process}}
    \begin{itemize}
    \setlength\itemsep{0.8em}
       \item Reset vector: UEFI, BIOS, \dots
       \item I/O, *PIC(IRQ), VGA
       \item POST + PCI BIOS
-      \item Выбор загрузочного устройства
-      \item Загрузчик stage0 (boot sector)
-      \item Загрузчик stage1
-      \item Ядро ОС
+      \item \Rus{Выбор загрузочного устройства}\Eng{Boot device detection}
+      \item \Rus{Загрузчик stage0 (boot sector)}\Eng{Bootloader stage0 (boot sector)}
+      \item \Rus{Загрузчик stage1}\Eng{Bootloader stage1}
+      \item \Rus{Ядро ОС}\Eng{OS kernel}
    \end{itemize}
 \end{frame}
 
-\iframe{Системные вызовы}
+\iframe{\Rus{Системные вызовы}\Eng{Syscalls}}
    \begin{itemize}
    \setlength\itemsep{1em}
-      \item Обращение к функции ядра системы
-      \item Использование аппаратного обеспечения через единый API
-      \item Имеют интерфейс libc
-      \item Имеют привилегии ядра операционной системы
+      \item \Rus{Обращение к функции ядра системы}\Eng{Kernel functions calling}
+      \item \Rus{Использование аппаратного обеспечения через единый API}\Eng{Using hardware via the common API}
+      \item \Rus{Имеют интерфейс libc}\Eng{Have libc interfaces}
+      \item \Rus{Имеют привилегии ядра операционной системы}\Eng{Have kernel privileges}
    \end{itemize}
 \end{frame}
 
-\iframe{Обращение к системе} 
-   \lstinputlisting[language=C]{listings/e3.c}
+\iframe{\Rus{Обращение к системе}\Eng{Calling the OS}}
+   \Rus{\lstinputlisting[language=C]{listings/e3rus.c}}\Eng{\lstinputlisting[language=C]{listings/e3eng.c}}
 
    \lstinputlisting[language=C]{listings/e4.c}
 
@@ -274,31 +281,31 @@ Hello, world!
    \end{center}
 \end{frame}
 
-\iframe{Файл} 
+\iframe{\Rus{Файл}\Eng{File}}
    \begin{center}
-      Что такое файл?
+      \Rus{Что такое файл?}\Eng{What is a file?}
    \end{center}
    \vspace{2cm} Everything is a file!
 
-   \textit{Кроме потоков и ядра}
+   \textit{\Rus{Кроме потоков и ядра}\Eng{Apart from threads and the kernel}}
 \end{frame}
 
-\iframe{Дескриптор файла} 
+\iframe{\Rus{Дескриптор файла}\Eng{File descriptor}}
    \begin{normalsize}
       \url{http://src.illumos.org/source/xref/illumos-gate/usr/src/uts/common/syscall/open.c#54} \\
       \vspace{1em} \url{http://src.illumos.org/source/xref/illumos-gate/usr/src/uts/common/fs/vnode.c#940}
    \end{normalsize}
    \begin{itemize}
-      \item Номер файлового дескриптора -- целое неотрицательное число, абстрагирующее процессы от файлов, с которыми они работают.
+      \item \Rus{Номер файлового дескриптора -- целое неотрицательное число, абстрагирующее процессы от файлов, с которыми они работают.}\Eng{A file descriptor number is a positive integer that abstracts processes from files they are using.}
    \end{itemize}
 \end{frame}
 
-\iframe{Потоки ввода-вывода процесса}
+\iframe{\Rus{Потоки ввода-вывода процесса}\Eng{I/O streams of a process}}
    \begin{table}[H]
       \centering
       \begin{tabular}{|c|c|c|}
          \hline
-         \textbf{Номер} & \textbf{Файл} & \textbf{Флаги} \\
+         \textbf{\Rus{Номер}\Eng{Number}} & \textbf{\Rus{Файл}\Eng{File}} & \textbf{\Rus{Флаги}\Eng{Flags}} \\
          \hline 0 & /dev/tty & \makecell{O\_RDWR | \\ O\_LARGEFILE} \\ 
          \hline 1 & /dev/tty & \makecell{O\_RDWR | \\ O\_LARGEFILE} \\ 
          \hline 2 & /dev/tty & \makecell{O\_RDWR | \\ O\_LARGEFILE} \\ 
@@ -311,153 +318,122 @@ Hello, world!
    \end{table}
 \end{frame}
 
-\iframe{Стандартные потоки ввода-вывода} 
+\iframe{\Rus{Стандартные потоки ввода-вывода}\Eng{Standard I/O streams}}
    \lstinputlisting[language=C]{listings/e5.c}
 \end{frame}
 
-\iframe{open(2)} 
-   \begin{lstlisting}
-int open(
-   const char *path,  /* путь к файлу */
-   int oflag,        /* режим доступа */
-   /* mode_t mode */ /* права доступа */
-);
-   \end{lstlisting}
+\iframe{ open(2)}
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/open.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/open.ru.c}}
 
-   \vspace{1em} Функция возвращает номер дескриптора или код ошибки
+   \vspace{1em} \Rus{Функция возвращает номер дескриптора или код ошибки}\Eng{Returns a file descriptor number or an error code}
 \end{frame}
 
-\iframe{Основные режимы доступа} 
+\iframe{\Rus{Основные режимы доступа}\Eng{Common access modes}}
    \begin{itemize}
    \setlength\itemsep{0.6em}
-      \item[] O\_RDONLY -- только для чтения
-      \item[] O\_WRONLY -- только для записи
-      \item[] O\_RDWR -- для записи/чтения
-      \item[] O\_CREAT -- создать, если не существует
-      \item[] O\_APPEND -- запись с конца
-      \item[] O\_TRUNC -- запись с начала 
-      \item[] O\_LARGEFILE -- длинная позиция в файле
-      \item[] O\_EXCL -- длинная позиция в файле
+      \item[] O\_RDONLY -- \Rus{только для чтения}\Eng{Read-only}
+      \item[] O\_WRONLY -- \Rus{только для записи}\Eng{Write-only}
+      \item[] O\_RDWR -- \Rus{для записи/чтения}\Eng{Read-write}
+      \item[] O\_CREAT -- \Rus{создать, если не существует}\Eng{Create if not exists}
+      \item[] O\_APPEND -- \Rus{запись с конца}\Eng{Append to the end of the file}
+      \item[] O\_TRUNC -- \Rus{запись с начала}\Eng{Write from the beginning of the file}
+      \item[] O\_LARGEFILE -- \Rus{длинная позиция в файле}\Eng{Long file position}
+      \item[] O\_EXCL -- \Rus{длинная позиция в файле}\Eng{Long file position}
    \end{itemize}
 \end{frame}
 
-\iframe{lseek(2)} 
-   \begin{lstlisting}
-off_t lseek(
-   int fildes, /* номер открытого файла */
-   off_t offset,    /* смещение позиции */
-   int whence               /* действие */
-);
-   \end{lstlisting}
+\iframe{ lseek(2)} 
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/lseek.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/lseek.ru.c}}
    
-   \vspace{1em} Функция возвращает полученное смещение в байтах или код ошибки
+   \vspace{1em} \Rus{Функция возвращает полученное смещение в байтах или код ошибки}\Eng{Returns an updated offset in bytes or an error code}
 \end{frame}
 
-\iframe{read(2)} 
-   \begin{lstlisting}
-ssize_t read(
-   int fildes, /* номер открытого файла */
-   void *buf,           /* буфер чтения */
-   size_t nbyte      /* количество байт */
-);
-   \end{lstlisting}
+\iframe{ read(2)} 
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/read.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/read.ru.c}}
    
-   \vspace{1em} Функция возвращает количество прочитанных байт или код ошибки
+   \vspace{1em} \Rus{Функция возвращает количество прочитанных байт или код ошибки}\Eng{Returns the amount of bytes read successfully or an error code}
 \end{frame}
 
-\iframe{write(2)} 
-   \begin{lstlisting}
-ssize_t write(
-   int fildes, /* номер дескриптора */
-   const void *buf, /* буфер записи */
-   size_t nbyte  /* количество байт */
-);
-   \end{lstlisting}
+\iframe{ write(2)} 
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/write.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/write.ru.c}}
    
-   \vspace{1em} Функция возвращает количество записанных байт или код ошибки
+   \vspace{1em} \Rus{Функция возвращает количество записанных байт или код ошибки}\Eng{Returns the amount of bytes written successfully or an error code}
 \end{frame}
 
-\iframe{close(2)} 
-   \begin{lstlisting}
-int close(
-   int fildes, /* номер дескриптора */
-);
-   \end{lstlisting}
+\iframe{ close(2)} 
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/close.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/close.ru.c}}
    
-   \vspace{1em} Функция возвращает 0 или код ошибки
+   \vspace{1em} \Rus{Функция возвращает 0 или код ошибки}\Eng{Returns zero or an error code}
 \end{frame}
 
-\iframe{dup(2) и dup2(2)} 
-   \begin{lstlisting}
-int dup(
-   int fildes /* номер открытого файла */
-);
-int dup2(int fildes, int fildes2);
-   \end{lstlisting}
+\iframe{ dup(2)\Rus{и}\Eng{and} dup2(2)} 
+
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/dup.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/dup.ru.c}}
    
-   \vspace{1em} Функция возвращает номер нового дескриптора или код ошибки
+   \vspace{1em} \Rus{Функция возвращает номер нового дескриптора или код ошибки}\Eng{Returns a number of a new file descriptor or an error code}
 \end{frame}
 
-\iframe{stat(2)} 
-   \begin{lstlisting}
-int stat(
-   const char *restrict path,
-      /* путь к файлу*/
-   struct stat *restrict buf 
-      /* результат */
-); \end{lstlisting}
+\iframe{ stat(2)} 
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/stat.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/stat.ru.c}}
    
-   \vspace{1em} Функция возвращает номер 0 или код ошибки
+   \vspace{1em} \Rus{Функция возвращает номер 0 или код ошибки}\Eng{Returns zero or an error code}
 \end{frame}
 
-\iframe{Ошибки в системных вызовах} 
+\iframe{\Rus{Ошибки в системных вызовах}\Eng{Errors in syscalls}}
    \begin{itemize}
    \setlength\itemsep{1em}
-      \item[] Код возврата системного вызова:
-      \item меньше 0 -- ошибка в ходе выполнения вызова
-      \item равен 0 -- успешное выполнение
-      \item больше 0 -- результат успешного выполнения
+      \item[] \Rus{Код возврата системного вызова:}\Eng{A return code of the syscall:}
+      \item \Rus{меньше 0 -- ошибка в ходе выполнения вызова}\Eng{below zero -- an error occured while syscall processing}
+      \item \Rus{равен 0 -- успешное выполнение}\Eng{equals to zero -- successful execution of the syscall}
+      \item \Rus{больше 0 -- результат успешного выполнения}\Eng{above zero - the result of the successful exection}
    \end{itemize}
 \end{frame}
 
-\iframe{Стандартизация ошибок} 
+\iframe{\Rus{Стандартизация ошибок}\Eng{Error code standardization}}
    \begin{itemize}
    \setlength\itemsep{1em}
-      \item Унификация ошибочных кодов
-      \item Переменная \lstinline{errno}
-      \item Функция \lstinline{perror(3)}
-      \item Функция \lstinline{strerror(3)}
+      \item \Rus{Унификация ошибочных кодов}\Eng{Error code unification}
+      \item \Rus{Переменная }\lstinline{errno}\Eng{variable}
+      \item \Rus{Функция }\lstinline{perror(3)}\Eng{function}
+      \item \Rus{Функция }\lstinline{strerror(3)}\Eng{function}
    \end{itemize}
 \end{frame}
 
-\iframe{Пример ошибки} 
+\iframe{\Rus{Пример ошибки}\Eng{Error example}} 
    \lstinputlisting[language=C]{listings/sl28.c}
 \end{frame}
 
-\iframe{Заголовочные файлы} 
+\iframe{\Rus{Заголовочные файлы}\Eng{Headers}} 
    \begin{itemize}
    \setlength\itemsep{1em}
-      \item unistd.h -- объявления UNIX
-      \item stdio.h -- стандартный ввод/вывод
-      \item fcntl.h -- операции с файлами
-      \item sys/types.h -- системные типы
-      \item sys/stat.h -- системные статусы 
+      \item unistd.h -- \Rus{объявления UNIX}\Eng{UNIX declarations}
+      \item stdio.h -- \Rus{стандартный ввод/вывод}\Eng{standard input/output}
+      \item fcntl.h -- \Rus{операции с файлами}\Eng{file operations} 
+      \item sys/types.h -- \Rus{системные типы}\Eng{system types}
+      \item sys/stat.h -- \Rus{системные статусы}\Eng{system statuses}
    \end{itemize}
 \end{frame}
 
-\iframe{Пример чтения/записи} 
+\iframe{\Rus{Пример чтения/записи}\Eng{Read/write example}} 
    \lstinputlisting[language=C]{listings/sl30.c}
 \end{frame}
 
-\iframe{Makefile} 
+\iframe{ Makefile} 
    \lstinputlisting[language=C]{listings/sl31.c}
 \end{frame}
 
-\iframe{Утилита make} 
+\iframe{\Rus{Утилита make}\Eng{make utility}}  
    \lstinputlisting[language=C]{listings/sl32.c}
 \end{frame}
 
-\iframe{Полезные функции}
+\iframe{\Rus{Полезные функции}\Eng{Useful functions}} 
 \begin{itemize}
 	\item isatty(3C) 
 	\item gethostbyname(3NSL) 
@@ -470,71 +446,60 @@ int stat(
 \end{itemize}
 \end{frame}
 
-\iframe{Ввод-вывод со смещением} 
+\iframe{\Rus{Ввод-вывод со смещением}\Eng{I/O with offsets}} 
    \lstinputlisting[language=C]{listings/sl33.c}
-   \vspace{1em} Функции возвращают количество байт или код ошибки
+   \vspace{1em} \Rus{Функции возвращают количество байт или код ошибки}\Eng{Returns the amount of bytes or an error code}
 \end{frame}
 
-\iframe{Рассеянный ввод-вывод} 
-   \begin{lstlisting}
-ssize_t readv(
-   int fildes,   /* дескриптор файла */
-   const struct iovec *iov,
-                  /* массив структур */
-   int iovcnt /* количество структур */
-); \end{lstlisting}
+\iframe{\Rus{Рассеянный ввод-вывод}\Eng{Useful functions}} 
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/readv.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/readv.ru.c}}
 
-   \vspace{1em} Функция возвращает количество байт или код ошибки
+   \vspace{1em} \Rus{Функция возвращает количество байт или код ошибки}\Eng{Returns the amount of bytes or an error code}
 \end{frame}
 
-\iframe{Структура iovec (I/O vector)} 
+\iframe{\Rus{Структура iovec (I/O vector)}\Eng{iovec structure (I/O vector)}} 
    \lstinputlisting[language=C]{listings/sl35.c}
 \end{frame}
 
-\iframe{Сброс кешей} 
-   \begin{lstlisting}
-void sync(
-   void /* не принимает аргументов */
-); \end{lstlisting}
+\iframe{\Rus{Сброс кешей}\Eng{Cache flushing}} 
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/sync.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/sync.ru.c}}
 
-   \vspace{1em} Код возврата функции не информативен
+   \vspace{1em} \Rus{Код возврата функции не информативен}\Eng{Return code is meaningless}
 \end{frame}
 
-\iframe{Работа с файловыми дескрипторами} 
-   \begin{lstlisting}
-int fcntl(
-   int fildes,          /* дескриптор */
-   int cmd,                /* команда */
-   ... /* переменное число аргументов */
-); \end{lstlisting}
+\iframe{\Rus{Работа с файловыми дескрипторами}\Eng{Working with file descriptors}} 
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/fcntl.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/fcntl.ru.c}}
 
-   \vspace{1em} Код возврата функции интерпретируется в зависимости от команды
+   \vspace{1em} \Rus{Код возврата функции интерпретируется в зависимости от команды}\Eng{Return code meaning depends on a particular command}
 \end{frame}
 
-\iframe{Команды fcntl(2)} 
-   F\_DUPFD / F\_DUP2FD \hfill аналог dup/dup2 \\
-   F\_FREESP \hfill освободить место \\
-   F\_GETFD / F\_SETFD \hfill флаг close on exec \\
-   F\_GETFL / F\_SETFL \hfill флаги доступа \\
-   \vspace{1em} F\_GETLK / F\_SETLK \hfill блокировка файла \\
+\iframe{\Rus{Команды }fcntl(2)\Eng{commands}} 
+   F\_DUPFD / F\_DUP2FD \hfill \Rus{аналог}\Eng{similar to} dup/dup2 \\
+   F\_FREESP \hfill \Rus{освободить место}\Eng{free up some space} \\
+   F\_GETFD / F\_SETFD \hfill \Rus{флаг }close on exec\Eng{ flag} \\
+   F\_GETFL / F\_SETFL \hfill \Rus{флаги доступа}\Eng{access flags} \\
+   \vspace{1em} F\_GETLK / F\_SETLK \hfill \Rus{блокировка файла}\Eng{file locking} \\
    F\_GETLKW / F\_SETLKW \hfill
 
    \begin{center} \vspace{1em} F\_RDLCK / F\_WRLCK / F\_UNLCK \end{center}
 \end{frame}	
 
-\iframe{Проверка доступа} 
+\iframe{\Rus{Проверка доступа}\Eng{Access rights check}}
    \begin{lstlisting}
 int access(const char *path, int amode); \end{lstlisting}
 
-   R\_OK – чтение \\
-   W\_OK – запись \\
-   X\_OK – исполнение \\
-   F\_OK – существование
+   R\_OK – \Rus{чтение}\Eng{read} \\
+   W\_OK – \Rus{запись}\Eng{write} \\
+   X\_OK – \Rus{исполнение}\Eng{execute} \\
+   F\_OK – \Rus{существование}\Eng{existence}
 
-   \vspace{1em} Функция возвращает 0 или код ошибки
+   \vspace{1em} \Rus{Функция возвращает 0 или код ошибки}\Eng{Returns zero or an error code}
 \end{frame}
 
-\iframe{Изменение прав доступа} 
+\iframe{\Rus{Изменение прав доступа}\Eng{Access rights modification}} 
    \begin{lstlisting}
 int chmod(const char *path, mode_t mode); 
 int fchmod(int fildes, mode_t mode); \end{lstlisting}
@@ -543,10 +508,10 @@ int fchmod(int fildes, mode_t mode); \end{lstlisting}
    S\_IRWXU 00700 \\
    (S\_ISUID | S\_URWXU) 04700 
 
-   \vspace{1em} Функции возвращают 0 или код ошибки
+   \vspace{1em} \Rus{Функции возвращают 0 или код ошибки}\Eng{Returns zero or an error code}
 \end{frame}
 
-\iframe{Изменение владельца} 
+\iframe{\Rus{Изменение владельца}\Eng{Changing file owner}}
    \begin{lstlisting}
 int chown(
    const char *path,
@@ -559,71 +524,51 @@ int fchown(
    gid_t group
 ); \end{lstlisting}
 
-   \vspace{1em} Функции возвращают 0 или код ошибки
+   \vspace{1em} \Rus{Функции возвращают 0 или код ошибки}\Eng{Returns zero or an error code}
 \end{frame}
 
-\iframe{Маска создания файла} 
-   \begin{lstlisting}
-mode_t umask( 
-   mode_t cmask      /* значение маски */ 
-); \end{lstlisting}
+\iframe{\Rus{Маска создания файла}\Eng{File creation mask}} 
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/umask.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/umask.ru.c}}
 
-   \vspace{1em} Возвращает предыдущее значение маски 
+   \vspace{1em} \Rus{Возвращает предыдущее значение маски}\Eng{Returns the previous mask value} 
 
-   \begin{center} \vspace{1em} Как получить текущее значение? \end{center}
+   \begin{center} \vspace{1em} \Rus{Как получить текущее значение?}\Eng{How should you get the current value?} \end{center}
 \end{frame}
 
-\iframe{Работа с ссылками} 
-   \begin{lstlisting}
-int link( 
-   const char *existing, /* путь к файлу*/
-   const char *new     /* путь к ссылке */
-);  
-int unlink(const char *path); 
-   \end{lstlisting}
+\iframe{\Rus{Работа с ссылками}\Eng{Working with links}}
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/link.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/link.ru.c}}
 
-   \vspace{1em} Функции возвращают 0 или код ошибки
+   \vspace{1em} \Rus{Функции возвращают 0 или код ошибки}\Eng{Returns zero or an error code}
 \end{frame}
 
-\iframe{Символьные ссылки} 
-   \begin{lstlisting}
-int symlink(
-   const char *name1,  
-   const char *name2
-); 
-
-ssize_t readlink( 
-   const char *restrict path, /* ссылка*/
-   char  *restrict buf,       /* буфер */ 
-   size_t bufsiz      /* размер буфера */ 
-); \end{lstlisting}
+\iframe{\Rus{Символьные ссылки}\Eng{Symbolic links}} 
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/symlink.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/symlink.ru.c}}
 \end{frame}
 
-\iframe{Работа с каталогами} 
-   \begin{lstlisting}
-int mkdir( 
-   const char *path, /* путь к каталогу */
-   mode_t mode       /* режим доступа */
-); 
-int rmdir(const char *path); \end{lstlisting}
-
-   \vspace{1em} Функции возвращают 0 или код ошибки
+\iframe{\Rus{Работа с каталогами}\Eng{Working with directories}} 
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/mkdir.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/mkdir.ru.c}}
+   \vspace{1em} \Rus{Функции возвращают 0 или код ошибки}\Eng{Returns zero or an error code}
 \end{frame}
 
-\iframe{Рабочая директория} 
+\iframe{\Rus{Рабочая директория}\Eng{Current working directory}} 
    \begin{lstlisting}
 int chdir(const char *path); 
 int fchdir(int fildes); \end{lstlisting}
 
-	\vspace{1em} \lstinline{getcwd(3)} возвращает указатель на буфер
-либо -1 и имеет прототип: 
+	\vspace{1em} \lstinline{getcwd(3)} \Rus{возвращает указатель на буфер
+либо -1 и имеет прототип:}\Eng{returns either a pointer to a buffer or a -1;
+has the following prototype}
 
    \begin{lstlisting}
 char *getcwd(char *buf, size_t size); 
    \end{lstlisting}
 \end{frame}
 
-\iframe{Чтение каталогов} 
+\iframe{\Rus{Чтение каталогов}\Eng{Reading directory}} 
 \begin{lstlisting}
    DIR *opendir(const char *dirname); 
 
@@ -635,42 +580,38 @@ char *getcwd(char *buf, size_t size);
 \end{lstlisting}
 \end{frame}
 
-\iframe{Структура dirent} 
-\begin{lstlisting}
-typedef struct dirent { 
-   ino_t d_ino;
-      /* номер индексного дескриптора */ 
-   off_t d_off; /* смещение от начала */ 
-   unsigned short reclen;
-                      /* длина записи */ 
-   char d_name[];        /* имя файла */ 
-} dirent_t; \end{lstlisting}
+\iframe{\Rus{Структура dirent}\Eng{dirent structure}} 
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/dirent.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/dirent.ru.c}}
 \end{frame}
 
-\iframe{Файлы устройств} 
-\begin{lstlisting}
-int mknod( 
-   const char *path,   /* путь к файлу */
-   mode_t mode, /* режим доступа и тип */
-   dev_t dev             /* устройство */
-); \end{lstlisting}
+\iframe{\Rus{Файлы устройств}\Eng{Device files}} 
+\Eng{\lstinputlisting[language=C]{listings/syscallexamples/mknod.en.c}}
+\Rus{\lstinputlisting[language=C]{listings/syscallexamples/mknod.ru.c}}
 
-   \vspace{1em} Функции возвращают 0 или код ошибки
+   \vspace{1em} \Rus{Функции возвращают 0 или код ошибки}\Eng{Returns zero or an error code}
 \end{frame}
 
-\iframe{Модель памяти процесса} 
+\iframe{\Rus{Модель памяти процесса}\Eng{Memory model of a process}} 
 \begin{center}
-	\includegraphics[width=0.99\textwidth]{img/mem_model.pdf}
+	
+	{\if\LANG3
+		\includegraphics[width=0.99\textwidth]{img/mem_model_ru.pdf}
+	\fi }
+	{\if\LANG2
+		\includegraphics[width=0.99\textwidth]{img/mem_model_en.pdf}
+	\fi }
+
 \end{center}       
 \end{frame}
 
-\iframe{Выделение памяти} 
-	Расширение сегмента данных: 
+\iframe{\Rus{Выделение памяти}\Eng{Memory allocation}} 
+	\Rus{Расширение сегмента данных:}\Eng{Data segment extension:} 
    \begin{lstlisting}
 int brk(void *endds); 
 void *sbrk(intptr_t incr); \end{lstlisting}
 
-	\vspace{0.4em} Выделение новых сегментов из анонимной памяти: 
+	\vspace{0.4em} \Rus{Выделение новых сегментов из анонимной памяти:}\Eng{New segment allocation from an Anonymous Memory:}
    \begin{lstlisting}
 void *mmap(
    void *addr,
@@ -682,19 +623,27 @@ void *mmap(
 ); \end{lstlisting}
 \end{frame}
 
-\iframe{Утилита pmap(1)} 
+\iframe{\Rus{Утилита }pmap(1)\Eng{utility}} 
 \lstinputlisting[language=C]{listings/sl52.c}
 \end{frame}
 
-\iframe{Процесс} 
-	Процесс -- это совокупность программы и метаинформации, описывающей её выполнение \textcopyright KorG
+\iframe{\Rus{Процесс}\Eng{Process}} 
+	\Rus{Процесс -- это совокупность программы и метаинформации, описывающей её выполнение \textcopyright KorG}
+	\Eng{A process is an aggregation of a program and a metadata describing the program's runtime \textcopyright KorG}
 
-	\vspace{1em} Выполняются параллельно и формально независимы друг от друга
+	\vspace{1em} \Rus{Выполняются параллельно и формально независимы друг от друга}\Eng{Run in parallel; technically independent from each other}
 \end{frame}
 
-\iframe{Состояния процесса} 
+\iframe{\Rus{Состояния процесса}\Eng{Process states}}
 \begin{center}
-\includegraphics[width=0.99\textwidth]{img/process_states.pdf}
+	
+	{\if\LANG3
+		\includegraphics[width=0.99\textwidth]{img/process_states_ru.pdf}
+		\fi }
+	{\if\LANG2
+		\includegraphics[width=0.99\textwidth]{img/process_states_en.pdf}
+	\fi }
+	
 \end{center}      
 \end{frame}
 
@@ -703,7 +652,7 @@ void *mmap(
 \usebackgroundtemplate{}
 \begin{frame}[fragile]
    \vspace{3em}
-   \centering \LARGE Спасибо за внимание
+   \centering \LARGE \Rus{Спасибо за внимание}\Eng{Thanks!}
 
    \vspace{4em}
    \begin{tabular}{c}
